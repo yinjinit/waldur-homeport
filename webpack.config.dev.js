@@ -49,6 +49,8 @@ module.exports = merge(baseConfig, {
   ],
   devServer: {
     // look for missing files in app folder (app has to be built one more time for this)
+    host: '0.0.0.0',
+    disableHostCheck: true,
     contentBase: utils.formatPath('.'),
     hot: true,
     inline: true,
