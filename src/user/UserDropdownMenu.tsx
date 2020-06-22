@@ -28,7 +28,7 @@ export const UserDropdownMenu = () => {
       <Dropdown id="user-sidebar" className="profile-element">
         <Gravatar email={user.email} className="img-circle" size={48} />
         <Dropdown.Toggle useAnchor noCaret>
-          <span className="block m-t-xs">
+          <span className="block m-t-xs font-bold">
             {user.full_name || translate('User profile')}
           </span>
           <span className="text-muted text-xs block">
@@ -36,7 +36,7 @@ export const UserDropdownMenu = () => {
             <b className="caret"></b>
           </span>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="m-t-xs">
+        <Dropdown.Menu className="m-t-xs animated fadeInRight">
           {menuItems.map((item, index) => (
             <MenuItem key={index} href={item.href}>
               {item.label}

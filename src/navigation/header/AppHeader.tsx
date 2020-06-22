@@ -20,7 +20,7 @@ const SelectWorkspaceToggle = angular2react('selectWorkspaceToggle');
 
 export const AppHeader = () => (
   <Row className="border-bottom">
-    <Navbar staticTop bsStyle="inverse" fluid className="m-b-none">
+    <Navbar staticTop fluid className="m-b-none">
       <Navbar.Header className="m-b-sm">
         <SidebarToggle />
         <SelectWorkspaceToggle />

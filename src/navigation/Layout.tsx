@@ -64,5 +64,4 @@ export const Layout: React.FC<LayoutProps> = ({
 
 Layout.defaultProps = {
   hideBreadcrumbs: false,
-  pageClass: 'white-bg',
 };

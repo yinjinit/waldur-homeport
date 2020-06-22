@@ -13,7 +13,7 @@ const workspaceIconClasses = {
 const workspaceButtonClasses = {
   organization: 'btn-primary',
   project: 'btn-success',
-  user: 'btn-info',
+  user: 'btn-primary',
   support: 'btn-warning',
 };
 

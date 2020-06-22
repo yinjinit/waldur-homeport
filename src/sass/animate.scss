@@ -1,7 +1,9 @@
-@mixin transition($property, $duration, $timing) {
-  transition-property: $property;
-  transition-duration: $duration;
-  transition-timing-function: $timing;
+@mixin transition($transition...) {
+  @if length($transition) == 0 {
+    transition: $transition-base;
+  } @else {
+    transition: $transition;
+  }
 }
 
 .spin {
@@ -22,4 +24,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+
+  &.infinite {
+    animation-iteration-count: infinite;
+  }
+
+  &.hinge {
+    animation-duration: 2s;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fadeInRight {
+  animation-name: fadeInRight;
 }

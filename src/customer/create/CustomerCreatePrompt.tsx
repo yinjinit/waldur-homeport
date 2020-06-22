@@ -103,7 +103,7 @@ export const CustomerCreatePrompt = (props: CustomerCreatePromptProps) => {
   };
 
   return (
-    <div className="customer-create-prompt">
+    <div className="customer-create-prompt ibox">
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalDialog
           title={getTitle()}

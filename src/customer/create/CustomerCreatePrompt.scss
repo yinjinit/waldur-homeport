@@ -2,9 +2,14 @@
   label {
     width: 100%;
   }
+
+  .message-button {
+    padding: 25px 20px;
+  }
+
   .checked .message-button {
-    background-color: #337ab7;
-    border-color: #337ab7;
+    background-color: #1ab394;
+    border-color: #1ab394;
     color: #fff;
   }
 }
@@ -19,7 +24,7 @@
 
 .customer-create-prompt {
   .modal-title {
-    font-size: 18px;
+    font-size: 14px;
   }
   .single-button {
     label {

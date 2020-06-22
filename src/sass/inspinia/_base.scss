@@ -155,10 +155,6 @@ video {
   z-index: 2200;
 }
 
-.modal-body {
-  padding: 20px 30px 30px 30px;
-}
-
 .inmodal .modal-body {
   background: #f8fafb;
 }
@@ -536,6 +532,9 @@ code {
   margin-bottom: 25px;
   margin-top: 0;
   padding: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: $ibox-bg;
 }
 
 .ibox.collapsed .ibox-content {
@@ -556,35 +555,21 @@ code {
 }
 
 .ibox-title {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  background-color: $ibox-title-bg;
-  border-color: $border-color;
-  border-image: none;
-  border-style: solid solid none;
-  border-width: 2px 0 0;
   color: inherit;
   margin-bottom: 0;
   padding: 15px 15px 7px;
   min-height: 48px;
+  background-color: $ibox-title-bg;
 }
 
 .ibox-content {
   background-color: $ibox-content-bg;
   color: inherit;
-  padding: 15px 20px 20px 20px;
-
-  border-color: $border-color;
-  border-image: none;
-  border-style: solid solid none;
-  border-width: 1px 0;
+  padding: 15px;
 }
 
 .ibox-footer {
   color: inherit;
-  border-top: 1px solid $border-color;
   font-size: 90%;
   background: #ffffff;
   padding: 10px 15px;
@@ -1429,11 +1414,6 @@ body.modal-open .animated {
 }
 
 /* Show profile dropdown on fixed sidebar */
-body.mini-navbar.fixed-sidebar .profile-element,
-.block {
-  display: block !important;
-}
-
 body.mini-navbar.fixed-sidebar .nav-header {
   padding: 33px 25px;
 }

@@ -5,12 +5,6 @@
     min-height: 100vh;
   }
 
-  .navbar-static-side {
-    z-index: 2001;
-    position: absolute;
-    width: $sidebar-width;
-  }
-
   .navbar-top-links .dropdown-orders,
   .navbar-top-links .dropdown-tasks,
   .navbar-top-links .dropdown-alerts {
@@ -45,7 +39,6 @@
   }
 
   .navbar-header {
-    display: inline;
     float: left;
   }
 

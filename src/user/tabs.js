@@ -11,7 +11,7 @@ export const tabs = {
     url: '',
     component: UserDashboard,
     data: {
-      pageClass: 'gray-bg',
+      hideBreadcrumbs: true,
     },
   },
   events: {

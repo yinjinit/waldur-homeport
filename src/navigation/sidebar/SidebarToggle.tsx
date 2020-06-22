@@ -34,7 +34,7 @@ export const SidebarToggle = () => {
 
   return (
     <a
-      className="navbar-minimalize minimalize-styl-2 btn btn-primary btn-outline visible-xs-stable"
+      className="navbar-minimalize minimalize-styl-2 btn btn-primary"
       onClick={toggleSidebar}
     >
       <i className="fa fa-bars"></i>

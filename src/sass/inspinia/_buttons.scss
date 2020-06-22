@@ -1,5 +1,11 @@
 .btn {
   border-radius: $btn-border-radius;
+  @include transition(
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out
+  );
 }
 
 .float-e-margins .btn {
@@ -53,8 +59,8 @@
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .btn-primary.active:focus {
-  background-color: darken($navy, 3%);
-  border-color: darken($navy, 3%);
+  background-color: darken($navy, 10%);
+  border-color: darken($navy, 10%);
   color: #ffffff;
 }
 
@@ -98,8 +104,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-success:active:hover,
 .btn-success.active:hover,
 .btn-success.active:focus {
-  background-color: darken($blue, 3%);
-  border-color: darken($blue, 3%);
+  background-color: darken($blue, 10%);
+  border-color: darken($blue, 10%);
   color: #ffffff;
 }
 
@@ -143,8 +149,8 @@ fieldset[disabled] .btn-success.active {
 .btn-info:active:hover,
 .btn-info.active:hover,
 .btn-info.active:focus {
-  background-color: darken($lazur, 3%);
-  border-color: darken($lazur, 3%);
+  background-color: darken($lazur, 10%);
+  border-color: darken($lazur, 10%);
   color: #ffffff;
 }
 
@@ -231,8 +237,8 @@ fieldset[disabled] .btn-default.active {
 .btn-warning:active:hover,
 .btn-warning.active:hover,
 .btn-warning.active:focus {
-  background-color: darken($yellow, 3%);
-  border-color: darken($yellow, 3%);
+  background-color: darken($yellow, 10%);
+  border-color: darken($yellow, 10%);
   color: #ffffff;
 }
 
@@ -276,8 +282,8 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger:active:hover,
 .btn-danger.active:hover,
 .btn-danger.active:focus {
-  background-color: darken($red, 3%);
-  border-color: darken($red, 3%);
+  background-color: darken($red, 10%);
+  border-color: darken($red, 10%);
   color: #ffffff;
 }
 

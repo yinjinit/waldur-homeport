@@ -19,11 +19,13 @@ $spin-margin: 0 auto;
 
 // IBOX colors ( default panel colors)
 $border-color: #e7eaec; // IBox border
+$ibox-bg: #ffffff; // IBox Background header
 $ibox-title-bg: #ffffff; // IBox Background header
 $ibox-content-bg: #ffffff; // IBox Background content
 
 //Sidebar width
 $sidebar-width: 220px;
+$sidebar-width-collapsed: 70px;
 
 // Boxed layout width
 $boxed-width: 1200px;
@@ -33,6 +35,6 @@ $boxed-background: url('../images/shattered.png');
 $btn-border-radius: 3px;
 
 //Navigation
-$nav-bg: #2f4050;
+$nav-bg: #f8f8f9;
 $nav-profile-pattern: url('../images/header-profile.png');
-$nav-text-color: #a7b1c2;
+$nav-text-color: #5b5d5f;
