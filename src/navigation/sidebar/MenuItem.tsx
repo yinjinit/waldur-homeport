@@ -18,7 +18,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   counter,
 }) => (
   <a onClick={() => onClick(item)}>
-    <i className={classNames('fa', item.icon, 'fixed-width-icon')}></i>
+    <i className={classNames('fa', item.icon)}></i>
     <span className="nav-label">{translate(item.label)}</span>
     {Number.isInteger(counter) ? (
       <Label className="pull-right">{counter}</Label>

@@ -29,7 +29,8 @@ export const SupportLink = () => {
   return (
     <li>
       <a onClick={gotoSupport} className={isActive ? 'active' : ''}>
-        <i className="fa fa-question-circle"></i> {translate('Support')}
+        <i className="fa fa-question-circle"></i>&nbsp;
+        <span>{translate('Support')}</span>
       </a>
     </li>
   );
