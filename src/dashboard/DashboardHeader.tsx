@@ -1,20 +1,16 @@
 import * as React from 'react';
+import { Grid } from 'react-bootstrap/lib';
 
 interface DashboardHeaderProps {
   title: React.ReactNode;
   subtitle: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const DashboardHeader = (props: DashboardHeaderProps) => (
-  <div
-    style={{
-      margin: -15,
-      paddingTop: 10,
-      paddingLeft: 25,
-      marginBottom: 0,
-    }}
-  >
+  <Grid fluid className="border-bottom white-bg dashboard-header">
     <h2>{props.title}</h2>
-    <p style={{ fontSize: 15 }}>{props.subtitle}</p>
-  </div>
+    <small>{props.subtitle}</small>
+    {props.children}
+  </Grid>
 );

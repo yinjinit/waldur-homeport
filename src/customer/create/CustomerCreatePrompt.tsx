@@ -7,7 +7,6 @@ import {
   RadioButtonField,
 } from '@waldur/form-react/RadioButtonField';
 import { TranslateProps } from '@waldur/i18n';
-import { ModalDialog } from '@waldur/modal/ModalDialog';
 
 import * as constants from './constants';
 import './CustomerCreatePrompt.scss';
@@ -103,29 +102,30 @@ export const CustomerCreatePrompt = (props: CustomerCreatePromptProps) => {
   };
 
   return (
-    <div className="customer-create-prompt ibox">
+    <div className="customer-create-prompt">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <ModalDialog
-          title={getTitle()}
-          footer={
-            <div>
+        <div className="panel panel-primary">
+          <div className="panel-heading">{getTitle()}</div>
+          <div className="panel-body">
+            <Field
+              name={constants.FIELD_NAMES.role}
+              component={renderRadioButtons}
+            />
+          </div>
+          <div className="panel-footer">
+            {error && (
               <div className="content-center">
                 <FieldError error={error} />
               </div>
-              <div className="content-center">
-                <SubmitButton
-                  submitting={submitting}
-                  label={translate('Create')}
-                />
-              </div>
+            )}
+            <div className="content-center">
+              <SubmitButton
+                submitting={submitting}
+                label={translate('Create')}
+              />
             </div>
-          }
-        >
-          <Field
-            name={constants.FIELD_NAMES.role}
-            component={renderRadioButtons}
-          />
-        </ModalDialog>
+          </div>
+        </div>
       </form>
     </div>
   );

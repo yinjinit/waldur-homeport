@@ -12,9 +12,9 @@ const workspaceIconClasses = {
 
 const workspaceButtonClasses = {
   organization: 'btn-primary',
-  project: 'btn-success',
+  project: 'btn-primary',
   user: 'btn-primary',
-  support: 'btn-warning',
+  support: 'btn-primary',
 };
 
 class SelectWorkspaceToggleController {

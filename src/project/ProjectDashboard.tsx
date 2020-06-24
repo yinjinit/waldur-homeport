@@ -22,6 +22,10 @@ interface ProjectDashboardProps {
 }
 
 export const ProjectDashboard = (props: ProjectDashboardProps) => {
+  const resourceTitleProps = {
+    title: translate('Resources'),
+  };
+
   useTitle(translate('Dashboard'));
   if (!props.project) {
     return null;
@@ -48,9 +52,7 @@ export const ProjectDashboard = (props: ProjectDashboardProps) => {
             <ComplianceChecklists />
           </Panel>
         )}
-        <Panel title={translate('Resources')}>
-          <ProjectResourcesList />
-        </Panel>
+        <ProjectResourcesList {...resourceTitleProps} />
         <CategoryResourcesList scopeType="project" scope={props.project} />
       </div>
     </>

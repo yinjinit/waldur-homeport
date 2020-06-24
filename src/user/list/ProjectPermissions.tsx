@@ -5,7 +5,7 @@ import { Table, connectTable, createFetcher } from '@waldur/table-react';
 import { filterByUser } from '@waldur/workspace/selectors';
 
 const TableComponent = props => {
-  const { translate } = props;
+  const { translate, title } = props;
   return (
     <Table
       {...props}
@@ -25,6 +25,7 @@ const TableComponent = props => {
       ]}
       verboseName={translate('projects')}
       enableExport={true}
+      title={title}
     />
   );
 };

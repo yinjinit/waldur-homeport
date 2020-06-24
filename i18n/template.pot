@@ -647,7 +647,6 @@ msgstr ""
 #: src/events/BaseEventsList.tsx
 #: src/project/utils.ts
 #: src/user/constants.ts
-#: src/user/list/UserDashboard.tsx
 msgid "Audit logs"
 msgstr ""
 
@@ -1751,7 +1750,6 @@ msgid "Detaching"
 msgstr ""
 
 #: src/customer/team/UserDetailsButton.tsx
-#: src/events/EventDetailsButton.tsx
 #: src/issues/create/CallerGroup.tsx
 #: src/issues/create/OrganizationGroup.tsx
 #: src/marketplace/details/plan/PlanDescriptionButton.tsx

@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { translate } from '@waldur/i18n/translate';
-import { ActionButton } from '@waldur/table-react/ActionButton';
-
 import { showEventDetails } from './actions';
 
 export const EventDetailsButton = ({ row }) => {
   const dispatch = useDispatch();
   return (
-    <ActionButton
-      title={translate('Details')}
-      action={() => dispatch(showEventDetails(row))}
-      icon="fa fa-eye"
-    />
+    <a onClick={() => dispatch(showEventDetails(row))}>
+      <i className="fa fa-eye text-navy" />
+    </a>
   );
 };

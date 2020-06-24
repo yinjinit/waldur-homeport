@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { Clearfix } from 'react-bootstrap/lib';
 
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
+import { Panel } from '@waldur/core/Panel';
 import { TranslateProps } from '@waldur/i18n/types';
 
 import './Table.scss';
@@ -35,6 +37,7 @@ export interface TableProps<RowType = any> extends TranslateProps, TableState {
   toggled?: object;
   enableExport?: boolean;
   placeholderComponent?: React.ReactNode;
+  title?: string;
 }
 
 class Table<RowType = any> extends React.Component<TableProps<RowType>> {
@@ -46,27 +49,35 @@ class Table<RowType = any> extends React.Component<TableProps<RowType>> {
 
   render() {
     return (
-      <div className="table-responsive dataTables_wrapper">
-        {this.props.blocked && <div className="table-block" />}
-        <TableButtons {...this.props} />
-        {this.props.hasQuery && (
-          <TableQuery query={this.props.query} setQuery={this.props.setQuery} />
-        )}
-        {this.props.showPageSizeSelector && (
-          <TablePageSize
-            pageSize={this.props.pagination.pageSize}
-            updatePageSize={this.props.updatePageSize}
-          />
-        )}
-        {this.hasRows() && <TableInfo {...this.props.pagination} />}
-        <div className="table-container">{this.renderBody()}</div>
-        {this.hasRows() && (
-          <TablePagination
-            {...this.props.pagination}
-            gotoPage={this.props.gotoPage}
-          />
-        )}
-      </div>
+      <Panel title={this.props.title}>
+        <div className="table-responsive dataTables_wrapper">
+          {this.props.blocked && <div className="table-block" />}
+          <TableButtons {...this.props} />
+          {this.props.showPageSizeSelector && (
+            <TablePageSize
+              pageSize={this.props.pagination.pageSize}
+              updatePageSize={this.props.updatePageSize}
+            />
+          )}
+          {this.props.hasQuery && (
+            <TableQuery
+              query={this.props.query}
+              setQuery={this.props.setQuery}
+            />
+          )}
+
+          <Clearfix />
+
+          {this.hasRows() && <TableInfo {...this.props.pagination} />}
+          <div className="table-container">{this.renderBody()}</div>
+          {this.hasRows() && (
+            <TablePagination
+              {...this.props.pagination}
+              gotoPage={this.props.gotoPage}
+            />
+          )}
+        </div>
+      </Panel>
     );
   }
 
@@ -106,7 +117,11 @@ class Table<RowType = any> extends React.Component<TableProps<RowType>> {
             </div>
           </>
         )}
-        <table className="table table-striped dataTable">
+        <table
+          className="table table-striped table-bordered 
+          table-hover dataTable"
+          role="grid"
+        >
           <TableHeader
             onSortClick={this.props.sortList}
             currentSorting={this.props.sorting}

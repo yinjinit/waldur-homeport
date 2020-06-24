@@ -1,8 +1,5 @@
-import * as classNames from 'classnames';
 import * as React from 'react';
-import * as Label from 'react-bootstrap/lib/Label';
-import * as ListGroup from 'react-bootstrap/lib/ListGroup';
-import * as ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import { ListGroup, ListGroupItem, Button } from 'react-bootstrap/lib';
 
 import { Action } from './types';
 
@@ -10,17 +7,20 @@ export interface ActionListProps {
   actions: Action[];
 }
 
+const btnStyles = ['info', 'danger', 'warning'];
+
 export const ActionList = (props: ActionListProps) => (
   <ListGroup className="clear-list">
     {props.actions.map((action, index) => (
-      <ListGroupItem
-        key={index}
-        onClick={action.onClick}
-        className={classNames({ 'fist-item': index === 0 })}
-      >
-        <Label bsStyle="success" className="m-r-sm m-l-sm">
+      <ListGroupItem key={index}>
+        <Button
+          onClick={action.onClick}
+          bsStyle={btnStyles[index]}
+          className="m-r-sm"
+          bsSize="small"
+        >
           <i className="fa fa-plus" />
-        </Label>
+        </Button>
         {action.title}
       </ListGroupItem>
     ))}

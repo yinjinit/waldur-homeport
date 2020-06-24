@@ -17,7 +17,7 @@ export const Panel: React.FC<PanelProps> = ({
     {title && (
       <div className="ibox-title">
         <h5>{title}</h5>
-        {actions}
+        <div className="ibox-tools">{actions}</div>
       </div>
     )}
     <div className="ibox-content">{children}</div>

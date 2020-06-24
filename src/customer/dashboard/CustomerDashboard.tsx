@@ -1,14 +1,12 @@
 import * as React from 'react';
-import * as Col from 'react-bootstrap/lib/Col';
-import * as Row from 'react-bootstrap/lib/Row';
+import { Col, Row, Grid } from 'react-bootstrap/lib';
 import useAsync from 'react-use/lib/useAsync';
 
 import { EChart } from '@waldur/core/EChart';
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
-import { Panel } from '@waldur/core/Panel';
+import { Widget } from '@waldur/core/Widget';
 import { CategoryResourcesList } from '@waldur/dashboard/CategoryResourcesList';
 import { DashboardCounter } from '@waldur/dashboard/DashboardCounter';
-import { DashboardHeader } from '@waldur/dashboard/DashboardHeader';
 import { isFeatureVisible } from '@waldur/features/connect';
 import { translate } from '@waldur/i18n';
 import { useTitle } from '@waldur/navigation/title';
@@ -27,48 +25,66 @@ export const CustomerDashboard = (props: CustomerDashboardProps) => {
   const { loading, value } = useAsync(() => loadSummary(props.customer), [
     props.customer,
   ]);
+  const resProps = {
+    title: translate('Resources'),
+  };
 
   useTitle(translate('Dashboard'));
 
   return (
     <>
-      <DashboardHeader
-        title={translate('Welcome, {user}!', { user: props.user.full_name })}
-        subtitle={translate('Overview of {organization} organization', {
-          organization: props.customer.name,
-        })}
-      />
-      {loading ? (
-        <LoadingSpinner />
-      ) : Array.isArray(value) ? (
-        <div style={{ paddingLeft: 10 }}>
+      <Grid fluid>
+        <h1>{translate('Welcome, {user}!', { user: props.user.full_name })}</h1>
+        <small>
+          {translate('Overview of {organization} organization', {
+            organization: props.customer.name,
+          })}
+        </small>
+      </Grid>
+
+      <div className="wrapper wrapper-content animated fadeInRight">
+        {loading ? (
+          <LoadingSpinner />
+        ) : Array.isArray(value) ? (
           <Row>
-            {value.map((item, index) => (
-              <Col key={index} md={4}>
-                <DashboardCounter
-                  label={item.chart.title}
-                  value={item.chart.current}
-                />
-                <EChart options={item.options} height="100px" />
-              </Col>
-            ))}
-            <Col md={4}>
-              <CustomerActions customer={props.customer} user={props.user} />
+            <Col md={9}>
+              <Row>
+                {value.map((item, index) => (
+                  <Col key={index} sm={6}>
+                    <Widget className="navy-bg no-padding">
+                      <div className="p-m">
+                        <DashboardCounter
+                          label={item.chart.title}
+                          value={item.chart.current}
+                        />
+                      </div>
+                      <EChart options={item.options} height="100px" />
+                    </Widget>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+            <Col md={3}>
+              <Widget className="no-padding">
+                <CustomerActions customer={props.customer} user={props.user} />
+              </Widget>
             </Col>
           </Row>
-        </div>
-      ) : null}
-      <>
-        <Panel title={translate('Resources')}>
-          <CustomerResourcesList />
-        </Panel>
+        ) : null}
+
+        <Row className="m-t-lg">
+          <Col lg={12}>
+            <CustomerResourcesList {...resProps} />
+          </Col>
+        </Row>
+
         {isFeatureVisible('customer.dashboard.category-resources-list') && (
           <CategoryResourcesList
             scopeType="organization"
             scope={props.customer}
           />
         )}
-      </>
+      </div>
     </>
   );
 };

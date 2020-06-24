@@ -15,7 +15,7 @@ interface TablePageSizeProps {
 export const TablePageSize = (props: TablePageSizeProps) => {
   const pageSize = props.pageSize ? props.pageSize : 10;
   return (
-    <div>
+    <div className="dataTables_length">
       <span className="m-r-sm">{translate('Show')}</span>
       <Select
         className="table-page-size"

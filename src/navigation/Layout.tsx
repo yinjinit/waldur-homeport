@@ -53,7 +53,7 @@ export const Layout: React.FC<LayoutProps> = ({
           </Row>
         )}
         {children}
-        <div className="footer-indent">
+        <div className="page-content">
           <UIView />
         </div>
         <AppFooter />

@@ -8,7 +8,7 @@ import CustomerCreateButton from './CustomerCreateButton';
 import CustomerRole from './CustomerRole';
 
 const TableComponent = props => {
-  const { translate, filterColumns } = props;
+  const { translate, filterColumns, title } = props;
   return (
     <Table
       {...props}
@@ -26,6 +26,7 @@ const TableComponent = props => {
       verboseName={translate('organizations')}
       actions={<CustomerCreateButton />}
       enableExport={true}
+      title={title}
     />
   );
 };

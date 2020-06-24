@@ -29,7 +29,8 @@ export const ActionButton: React.FC<ActionButtonProps> = props =>
       className={classNames(props.className, { disabled: props.disabled })}
       onClick={props.action}
     >
-      {props.icon && <i className={props.icon} />} {props.title}
+      {props.icon && <i className={props.icon} />}
+      {props.title && ' ' + props.title}
     </button>,
   );
 
