@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+import { Panel } from '@waldur/core/Panel';
 import { $state } from '@waldur/core/services';
 import { useTitle } from '@waldur/navigation/title';
 import { Table, createFetcher, connectTable } from '@waldur/table-react';
@@ -16,31 +17,33 @@ const TableComponent = props => {
   const { translate } = props;
   useTitle(translate('SSH keys'));
   return (
-    <Table
-      {...props}
-      columns={[
-        {
-          title: translate('Title'),
-          render: ({ row }) => row.name,
-        },
-        {
-          title: translate('Fingerprint'),
-          render: ({ row }) => row.fingerprint,
-        },
-        {
-          title: translate('Actions'),
-          render: ({ row }) =>
-            props.isStaffOrSelf && <KeyRemoveButton uuid={row.uuid} />,
-          className: 'text-center col-md-2',
-        },
-      ]}
-      hasQuery={true}
-      showPageSizeSelector={true}
-      verboseName={translate('SSH keys')}
-      actions={props.isStaffOrSelf && <KeyCreateButton />}
-      placeholderComponent={<KeysListTablePlaceholder />}
-      enableExport={true}
-    />
+    <Panel>
+      <Table
+        {...props}
+        columns={[
+          {
+            title: translate('Title'),
+            render: ({ row }) => row.name,
+          },
+          {
+            title: translate('Fingerprint'),
+            render: ({ row }) => row.fingerprint,
+          },
+          {
+            title: translate('Actions'),
+            render: ({ row }) =>
+              props.isStaffOrSelf && <KeyRemoveButton uuid={row.uuid} />,
+            className: 'text-center col-md-2',
+          },
+        ]}
+        hasQuery={true}
+        showPageSizeSelector={true}
+        verboseName={translate('SSH keys')}
+        actions={props.isStaffOrSelf && <KeyCreateButton />}
+        placeholderComponent={<KeysListTablePlaceholder />}
+        enableExport={true}
+      />
+    </Panel>
   );
 };
 

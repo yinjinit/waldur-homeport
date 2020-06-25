@@ -17,7 +17,7 @@ const EventMessageField = ({ row }) => (
 const EventDateField = ({ row }) => <span>{formatDateTime(row.created)}</span>;
 
 const TableComponent = props => {
-  const { translate, title } = props;
+  const { translate } = props;
   useTitle(translate('Audit logs'));
   return (
     <Table
@@ -43,7 +43,6 @@ const TableComponent = props => {
       verboseName={translate('events')}
       actions={<EventTypesButton />}
       enableExport={true}
-      title={title}
     />
   );
 };

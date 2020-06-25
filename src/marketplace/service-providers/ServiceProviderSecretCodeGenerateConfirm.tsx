@@ -23,7 +23,7 @@ const ServiceProviderSecretCodeRegenerateAlert = withTranslation(
       footer={[
         <ActionButton
           key="2"
-          className="btn btn-success"
+          className="btn btn-primary"
           icon="fa fa-check"
           title={props.translate('Regenerate')}
           action={props.generateServiceProviderSecretCode}

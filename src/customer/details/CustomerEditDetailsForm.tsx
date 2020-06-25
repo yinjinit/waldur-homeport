@@ -32,7 +32,7 @@ const PureCustomerEditDetailsForm = (props: ConnectedProps) => (
     </div>
     {props.hasChosenImage && (
       <SubmitButton
-        className="btn btn-sm btn-success m-t-sm"
+        className="btn btn-sm btn-primary m-t-sm"
         submitting={props.submitting}
         label={props.translate('Update')}
       />

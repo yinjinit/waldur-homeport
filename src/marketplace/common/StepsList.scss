@@ -10,7 +10,7 @@
     width: 100%;
     margin-bottom: -1px;
     margin-left: -1px;
-    padding: 20px 15px;
+    padding: 10px;
     border: 1px solid #e5e5e5;
     background-color: #fff;
     z-index: 1;
@@ -22,24 +22,28 @@
       border-bottom-left-radius: 5px;
     }
 
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
     &.active {
-      border-color: #05f;
+      border-color: #1ab394;
+      background-color: #1ab394;
+      color: #ffffff;
       cursor: default;
       z-index: 5;
       pointer-events: none;
     }
 
     .step-title {
-      margin-bottom: 0;
-      margin-top: 0;
-      font-size: 14px;
-      font-weight: normal;
-      letter-spacing: 0.025em;
+      margin: 0;
+      font-size: 13px;
 
       & > i {
         margin-top: -2px;
         margin-right: 6px;
-        color: #4caf50;
+        color: #1ab394;
         font-size: 1.2em;
         vertical-align: middle;
       }

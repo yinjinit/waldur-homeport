@@ -3,6 +3,7 @@ import * as Col from 'react-bootstrap/lib/Col';
 import * as Row from 'react-bootstrap/lib/Row';
 
 import { Panel } from '@waldur/core/Panel';
+import { Widget } from '@waldur/core/Widget';
 import { CategoryResourcesList } from '@waldur/dashboard/CategoryResourcesList';
 import { DashboardHeader } from '@waldur/dashboard/DashboardHeader';
 import { translate } from '@waldur/i18n';
@@ -22,14 +23,12 @@ interface ProjectDashboardProps {
 }
 
 export const ProjectDashboard = (props: ProjectDashboardProps) => {
-  const resourceTitleProps = {
-    title: translate('Resources'),
-  };
-
   useTitle(translate('Dashboard'));
+
   if (!props.project) {
     return null;
   }
+
   return (
     <>
       <DashboardHeader
@@ -38,13 +37,15 @@ export const ProjectDashboard = (props: ProjectDashboardProps) => {
           project: props.project.name,
         })}
       />
-      <div style={{ paddingLeft: 10 }}>
+      <>
         <Row>
-          <Col md={8}>
+          <Col md={9}>
             <ProjectCounters project={props.project} />
           </Col>
-          <Col md={4}>
-            <ProjectActions {...props} />
+          <Col md={3}>
+            <Widget className="no-padding">
+              <ProjectActions {...props} />
+            </Widget>
           </Col>
         </Row>
         {props.marketplaceChecklistEnabled && (
@@ -52,9 +53,11 @@ export const ProjectDashboard = (props: ProjectDashboardProps) => {
             <ComplianceChecklists />
           </Panel>
         )}
-        <ProjectResourcesList {...resourceTitleProps} />
+        <Panel title={translate('Resources')}>
+          <ProjectResourcesList />
+        </Panel>
         <CategoryResourcesList scopeType="project" scope={props.project} />
-      </div>
+      </>
     </>
   );
 };

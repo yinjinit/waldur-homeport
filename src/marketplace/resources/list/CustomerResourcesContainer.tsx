@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Panel } from '@waldur/core/Panel';
 import { translate } from '@waldur/i18n';
 import { useTitle } from '@waldur/navigation/title';
 
@@ -9,9 +10,9 @@ import { CustomerResourcesList } from './CustomerResourcesList';
 export const CustomerResourcesContainer = () => {
   useTitle(translate('My resources'));
   return (
-    <div className="ibox-content">
+    <Panel>
       <CustomerResourcesFilter />
       <CustomerResourcesList />
-    </div>
+    </Panel>
   );
 };

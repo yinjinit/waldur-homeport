@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+import { Panel } from '@waldur/core/Panel';
 import { titleCase } from '@waldur/core/utils';
 import { useTitle } from '@waldur/navigation/title';
 import { Table, createFetcher, connectTable } from '@waldur/table-react';
@@ -27,46 +28,48 @@ const TableComponent = props => {
   const { translate } = props;
   useTitle(translate('Notifications'));
   return (
-    <Table
-      {...props}
-      columns={[
-        {
-          title: translate('State'),
-          className: 'text-center all',
-          render: StateField,
-        },
-        {
-          title: translate('Method'),
-          className: 'min-tablet-l',
-          render: ({ row }) => titleCase(row.hook_type),
-        },
-        {
-          title: translate('Destination'),
-          className: 'min-tablet-l',
-          render: ({ row }) => getDestinationField(row),
-        },
-        {
-          title: translate('Events'),
-          className: 'min-tablet-l',
-          render: ({ row }) => getEventsField(row),
-        },
-        {
-          title: translate('Actions'),
-          render: ({ row }) => (
-            <>
-              <HookUpdateButton row={row} />
-              <HookRemoveButton uuid={row.uuid} url={row.url} />
-            </>
-          ),
-          className: 'text-center col-md-2',
-        },
-      ]}
-      showPageSizeSelector={true}
-      verboseName={translate('Notifications')}
-      actions={<HookCreateButton />}
-      placeholderComponent={<HookListTablePlaceholder />}
-      enableExport={true}
-    />
+    <Panel>
+      <Table
+        {...props}
+        columns={[
+          {
+            title: translate('State'),
+            className: 'text-center all',
+            render: StateField,
+          },
+          {
+            title: translate('Method'),
+            className: 'min-tablet-l',
+            render: ({ row }) => titleCase(row.hook_type),
+          },
+          {
+            title: translate('Destination'),
+            className: 'min-tablet-l',
+            render: ({ row }) => getDestinationField(row),
+          },
+          {
+            title: translate('Events'),
+            className: 'min-tablet-l',
+            render: ({ row }) => getEventsField(row),
+          },
+          {
+            title: translate('Actions'),
+            render: ({ row }) => (
+              <>
+                <HookUpdateButton row={row} />
+                <HookRemoveButton uuid={row.uuid} url={row.url} />
+              </>
+            ),
+            className: 'text-center col-md-2',
+          },
+        ]}
+        showPageSizeSelector={true}
+        verboseName={translate('Notifications')}
+        actions={<HookCreateButton />}
+        placeholderComponent={<HookListTablePlaceholder />}
+        enableExport={true}
+      />
+    </Panel>
   );
 };
 

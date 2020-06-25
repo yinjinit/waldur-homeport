@@ -59,7 +59,7 @@ class PureAuthSaml2Dialog extends React.Component<InjectedFormProps> {
           <button
             disabled={invalid || submitting || pristine}
             type="submit"
-            className="btn btn-success"
+            className="btn btn-primary"
           >
             {translate('Login')}
           </button>

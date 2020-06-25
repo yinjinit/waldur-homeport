@@ -7,6 +7,7 @@ import { getById } from '@waldur/core/api';
 import { formatRelative, formatDateTime } from '@waldur/core/dateUtils';
 import { FormattedHtml } from '@waldur/core/FormattedHtml';
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
+import { Panel } from '@waldur/core/Panel';
 import { translate } from '@waldur/i18n';
 import { useTitle } from '@waldur/navigation/title';
 import { getUser } from '@waldur/workspace/selectors';
@@ -48,122 +49,120 @@ export const IssueDetails = () => {
   const staffOrSupport = currentUser.is_staff || currentUser.is_support;
   return (
     <>
-      <div className="ibox">
-        <div className="ibox-content">
-          <div className="row m-b-md">
-            <div className="col-lg-12">
-              <h2>
-                {issue.key ? `${issue.key}: ${issue.summary}` : issue.summary}
-              </h2>
-            </div>
+      <Panel>
+        <div className="row m-b-md">
+          <div className="col-lg-12">
+            <h2>
+              {issue.key ? `${issue.key}: ${issue.summary}` : issue.summary}
+            </h2>
           </div>
-          <div className="row m-b-md">
-            <dl className="dl-horizontal resource-details-table col-sm-12">
+        </div>
+        <div className="row m-b-md">
+          <dl className="dl-horizontal resource-details-table col-sm-12">
+            <div className="m-b-xs">
+              <dt>{translate('Caller')}:</dt>
+              <dd>{issue.caller_full_name}</dd>
+            </div>
+
+            {issue.reporter_name && staffOrSupport && (
               <div className="m-b-xs">
-                <dt>{translate('Caller')}:</dt>
-                <dd>{issue.caller_full_name}</dd>
+                <dt>{translate('Reporter')}:</dt>
+                <dd>{issue.reporter_name}</dd>
               </div>
+            )}
 
-              {issue.reporter_name && staffOrSupport && (
-                <div className="m-b-xs">
-                  <dt>{translate('Reporter')}:</dt>
-                  <dd>{issue.reporter_name}</dd>
-                </div>
-              )}
-
-              {staffOrSupport && (
-                <div className="m-b-xs">
-                  <dt>{translate('Assigned to')}:</dt>
-                  <dd>{issue.assignee_name || 'N/A'}</dd>
-                </div>
-              )}
-
-              {issue.customer_name && (
-                <div className="m-b-xs">
-                  <dt>{translate('Organization')}:</dt>
-                  <dd>{issue.customer_name}</dd>
-                </div>
-              )}
-
+            {staffOrSupport && (
               <div className="m-b-xs">
-                <dt>{translate('Request type')}:</dt>
-                <dd>{issue.type}</dd>
+                <dt>{translate('Assigned to')}:</dt>
+                <dd>{issue.assignee_name || 'N/A'}</dd>
               </div>
+            )}
 
-              {issue.project_name && (
-                <div className="m-b-xs">
-                  <dt>{translate('Project')}:</dt>
-                  <dd>{issue.project_name}</dd>
-                </div>
-              )}
-
-              {issue.resource_type && (
-                <div className="m-b-xs">
-                  <dt>{translate('Service type')}:</dt>
-                  <dd>{issue.resource_type}</dd>
-                </div>
-              )}
-
-              {issue.resource_name && (
-                <div className="m-b-xs">
-                  <dt>{translate('Affected resource')}:</dt>
-                  <dd>{issue.resource_name}</dd>
-                </div>
-              )}
-
+            {issue.customer_name && (
               <div className="m-b-xs">
-                <dt>{translate('Status')}:</dt>
-                <dd>{issue.status || 'N/A'}</dd>
+                <dt>{translate('Organization')}:</dt>
+                <dd>{issue.customer_name}</dd>
               </div>
+            )}
 
-              {issue.resolution && (
-                <div className="m-b-xs">
-                  <dt>{translate('Resolution')}:</dt>
-                  <dd>{issue.resolution}</dd>
-                </div>
-              )}
+            <div className="m-b-xs">
+              <dt>{translate('Request type')}:</dt>
+              <dd>{issue.type}</dd>
+            </div>
 
-              {issue.priority && (
-                <div className="m-b-xs">
-                  <dt>{translate('Priority')}:</dt>
-                  <dd>{issue.priority}</dd>
-                </div>
-              )}
-
-              {issue.link && staffOrSupport && (
-                <div className="m-b-xs">
-                  <dt>{translate('Link')}:</dt>
-                  <dd>
-                    <a
-                      href={issue.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="fa fa-external-link" />{' '}
-                      {translate('Open in Service Desk')}
-                    </a>
-                  </dd>
-                </div>
-              )}
-
+            {issue.project_name && (
               <div className="m-b-xs">
-                <dt>{translate('Created')}:</dt>
+                <dt>{translate('Project')}:</dt>
+                <dd>{issue.project_name}</dd>
+              </div>
+            )}
+
+            {issue.resource_type && (
+              <div className="m-b-xs">
+                <dt>{translate('Service type')}:</dt>
+                <dd>{issue.resource_type}</dd>
+              </div>
+            )}
+
+            {issue.resource_name && (
+              <div className="m-b-xs">
+                <dt>{translate('Affected resource')}:</dt>
+                <dd>{issue.resource_name}</dd>
+              </div>
+            )}
+
+            <div className="m-b-xs">
+              <dt>{translate('Status')}:</dt>
+              <dd>{issue.status || 'N/A'}</dd>
+            </div>
+
+            {issue.resolution && (
+              <div className="m-b-xs">
+                <dt>{translate('Resolution')}:</dt>
+                <dd>{issue.resolution}</dd>
+              </div>
+            )}
+
+            {issue.priority && (
+              <div className="m-b-xs">
+                <dt>{translate('Priority')}:</dt>
+                <dd>{issue.priority}</dd>
+              </div>
+            )}
+
+            {issue.link && staffOrSupport && (
+              <div className="m-b-xs">
+                <dt>{translate('Link')}:</dt>
                 <dd>
-                  {formatRelative(issue.created)} ago,{' '}
-                  {formatDateTime(issue.created)}
+                  <a
+                    href={issue.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fa fa-external-link" />{' '}
+                    {translate('Open in Service Desk')}
+                  </a>
                 </dd>
               </div>
-            </dl>
+            )}
 
-            <div className="col-sm-12">
-              <h3>{translate('Description')}</h3>
-              <div className="html-description">
-                <FormattedHtml html={linkify(issue.description)} />
-              </div>
+            <div className="m-b-xs">
+              <dt>{translate('Created')}:</dt>
+              <dd>
+                {formatRelative(issue.created)} ago,{' '}
+                {formatDateTime(issue.created)}
+              </dd>
+            </div>
+          </dl>
+
+          <div className="col-sm-12">
+            <h3>{translate('Description')}</h3>
+            <div className="html-description">
+              <FormattedHtml html={linkify(issue.description)} />
             </div>
           </div>
         </div>
-      </div>
+      </Panel>
 
       <IssueAttachmentsContainer issue={issue} />
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Panel } from '@waldur/core/Panel';
 import { PlanDetailsButton } from '@waldur/marketplace/details/plan/PlanDetailsButton';
 import { OfferingDetailsButton } from '@waldur/marketplace/offerings/details/OfferingDetailsButton';
 import { ResourceShowUsageButton } from '@waldur/marketplace/resources/usage/ResourceShowUsageButton';
@@ -28,7 +29,7 @@ export const ResourceDetails = ({ resource, refreshResource }) => {
 
   return (
     <div className="wrapper wrapper-content">
-      <div className="ibox-content">
+      <Panel>
         <div className="row m-b-md">
           <div className="col-lg-12">
             <div className="pull-right">
@@ -62,7 +63,7 @@ export const ResourceDetails = ({ resource, refreshResource }) => {
             <ResourceTabs resource={resource} />
           </div>
         </div>
-      </div>
+      </Panel>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const PureOfferingsListTablePlaceholder = ({
       customer.is_service_provider && (
         <Link
           state="marketplace-offering-create"
-          className="btn btn-success btn-md"
+          className="btn btn-primary btn-md"
         >
           {translate('Add new offering')}
         </Link>

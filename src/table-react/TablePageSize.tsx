@@ -3,8 +3,6 @@ import Select from 'react-select';
 
 import { translate } from '@waldur/i18n';
 
-import './TablePageSize.scss';
-
 const options = [10, 25, 50, 100].map(v => ({ name: v, value: v }));
 
 interface TablePageSizeProps {

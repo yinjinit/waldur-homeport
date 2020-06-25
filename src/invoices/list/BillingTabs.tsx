@@ -1,6 +1,6 @@
 import * as React from 'react';
-import PanelBody from 'react-bootstrap/lib/PanelBody';
 
+import { Panel } from '@waldur/core/Panel';
 import { ENV } from '@waldur/core/services';
 import { isFeatureVisible } from '@waldur/features/connect';
 import { useTitle } from '@waldur/navigation/title';
@@ -16,15 +16,15 @@ import { InvoicesList } from './InvoicesList';
 export const BillingTabs = () => {
   useTitle(getTabTitle());
   return ENV.accountingMode === 'accounting' ? (
-    <PanelBody>
+    <Panel>
       <AgreementInfo />
       <BillingRecordsList />
-    </PanelBody>
+    </Panel>
   ) : (
-    <PanelBody>
+    <Panel>
       <AgreementInfo />
       <EstimatedCost />
       {isFeatureVisible('paypal') ? <PayPalInvoicesList /> : <InvoicesList />}
-    </PanelBody>
+    </Panel>
   );
 };

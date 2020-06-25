@@ -17,7 +17,7 @@ export const CustomerErrorPanel = () => {
     <div className="highlight">
       <h3>{translate('Report incorrect data')}</h3>
       <p>{translate('You can create issue by pressing the button below')}</p>
-      <a onClick={reportError} className="btn btn-success">
+      <a onClick={reportError} className="btn btn-primary">
         <i className="fa fa-bug" /> {translate('Report incorrect data')}
       </a>
     </div>

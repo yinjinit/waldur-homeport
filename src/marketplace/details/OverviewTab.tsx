@@ -9,7 +9,7 @@ import { Offering } from '@waldur/marketplace/types';
 import { LeafletMap } from './LeafletMap';
 
 const DemoButton = () => (
-  <button className="btn btn-outline btn-success btn-sm">
+  <button className="btn btn-outline btn-primary btn-sm">
     <i className="fa fa-comment" /> {translate('Request demo')}
   </button>
 );

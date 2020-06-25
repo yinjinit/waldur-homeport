@@ -142,7 +142,7 @@ body.landing {
 }
 
 .nav.navbar-right > li > a.active {
-  color: $blue;
+  background-color: darken($navy, 15%);
 }
 
 .table-borderless tbody tr td,
@@ -235,4 +235,14 @@ body.landing {
 
 .Select-menu-outer {
   z-index: 5;
+}
+
+table.marker-popup {
+  th {
+    padding-right: 5px;
+  }
+
+  button {
+    margin-top: 5px;
+  }
 }

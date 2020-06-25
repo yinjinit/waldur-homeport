@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 
+import { Panel } from '@waldur/core/Panel';
 import { isEmpty } from '@waldur/core/utils';
 import { getEventsList } from '@waldur/events/BaseEventsList';
 import { getProject } from '@waldur/workspace/selectors';
@@ -31,8 +32,8 @@ const mapStateToProps = state => ({
 const ProjectEvents = connect(mapStateToProps)(PureProjectEvents);
 
 export const ProjectEventsView = props => (
-  <>
+  <Panel>
     <ProjectEventsFilter />
     <ProjectEvents {...props} />
-  </>
+  </Panel>
 );

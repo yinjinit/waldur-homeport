@@ -53,7 +53,7 @@ export const Layout: React.FC<LayoutProps> = ({
           </Row>
         )}
         {children}
-        <div className="page-content">
+        <div className="wrapper wrapper-content">
           <UIView />
         </div>
         <AppFooter />

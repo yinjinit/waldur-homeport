@@ -11,7 +11,6 @@ import { CloseDialogButton } from '@waldur/modal/CloseDialogButton';
 import { getCustomer } from '@waldur/workspace/selectors';
 import { Customer } from '@waldur/workspace/types';
 
-import './SelectWorkspaceDialog.scss';
 import { EmptyOrganizationsPlaceholder } from './EmptyOrganizationsPlaceholder';
 import { OrganizationsPanel } from './OrganizationsPanel';
 import { ProjectsPanel } from './ProjectsPanel';
@@ -54,10 +53,14 @@ export const SelectWorkspaceDialog = () => {
         )}
       </div>
       <div className="modal-footer">
-        <Button onClick={() => router.stateService.go('profile.details')}>
-          {translate('Go to my profile')}
+        <Button
+          bsStyle="warning"
+          bsSize="small"
+          onClick={() => router.stateService.go('profile.details')}
+        >
+          {translate('Go To My Profile')}
         </Button>
-        <CloseDialogButton />
+        <CloseDialogButton className="btn btn-default btn-sm" />
       </div>
     </>
   );

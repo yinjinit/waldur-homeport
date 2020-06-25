@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import useAsync from 'react-use/lib/useAsync';
 
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
+import { Panel } from '@waldur/core/Panel';
 import { translate } from '@waldur/i18n';
 import { getCategory } from '@waldur/marketplace/common/api';
 import { useTitle } from '@waldur/navigation/title';
@@ -44,10 +45,12 @@ export const ProjectResourcesContainer: React.FC<{}> = () => {
     return <>{translate('Unable to load marketplace category details')}</>;
   } else {
     return (
-      <ProjectResourcesList
-        columns={value.columns}
-        category_uuid={category_uuid}
-      />
+      <Panel>
+        <ProjectResourcesList
+          columns={value.columns}
+          category_uuid={category_uuid}
+        />
+      </Panel>
     );
   }
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 
+import { Panel } from '@waldur/core/Panel';
 import { isEmpty } from '@waldur/core/utils';
 import { getEventsList } from '@waldur/events/BaseEventsList';
 import { translate } from '@waldur/i18n';
@@ -33,9 +34,9 @@ const CustomerEvents = connect(mapStateToProps)(PureCustomerEvents);
 export const CustomerEventsView = props => {
   useTitle(translate('Audit logs'));
   return (
-    <>
+    <Panel>
       <CustomerEventsFilter />
       <CustomerEvents {...props} />
-    </>
+    </Panel>
   );
 };

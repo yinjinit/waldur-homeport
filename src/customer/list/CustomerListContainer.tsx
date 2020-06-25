@@ -4,6 +4,7 @@ import useAsync from 'react-use/lib/useAsync';
 
 import { getList } from '@waldur/core/api';
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
+import { Panel } from '@waldur/core/Panel';
 import { translate } from '@waldur/i18n';
 import { useTitle } from '@waldur/navigation/title';
 
@@ -73,10 +74,10 @@ export const CustomerListContainer = () => {
   return (
     <>
       <CustomerListFilter {...data} />
-      <div className="ibox-content">
+      <Panel>
         <CustomerList />
         <TotalCostContainer />
-      </div>
+      </Panel>
     </>
   );
 };

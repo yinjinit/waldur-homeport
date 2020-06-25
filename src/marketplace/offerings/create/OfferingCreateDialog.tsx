@@ -5,6 +5,7 @@ import * as Row from 'react-bootstrap/lib/Row';
 import { InjectedFormProps } from 'redux-form';
 
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
+import { Panel } from '@waldur/core/Panel';
 import { translate } from '@waldur/i18n';
 import { useBreadcrumbsFn } from '@waldur/navigation/breadcrumbs/store';
 import { useTitle } from '@waldur/navigation/title';
@@ -73,16 +74,18 @@ export const OfferingCreateDialog: React.FC<OfferingCreateDialogProps> = props =
     return <p>{translate('Unable to load data.')}</p>;
   } else if (loaded) {
     return (
-      <Row>
-        <Col lg={10} lgOffset={1}>
-          <form
-            onSubmit={handleSubmit(createOffering)}
-            className="form-horizontal"
-          >
-            <Wizard steps={STEPS} tabs={TABS} {...rest} />
-          </form>
-        </Col>
-      </Row>
+      <Panel>
+        <Row>
+          <Col lg={10} lgOffset={1}>
+            <form
+              onSubmit={handleSubmit(createOffering)}
+              className="form-horizontal"
+            >
+              <Wizard steps={STEPS} tabs={TABS} {...rest} />
+            </form>
+          </Col>
+        </Row>
+      </Panel>
     );
   }
 };

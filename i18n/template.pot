@@ -356,6 +356,7 @@ msgstr ""
 
 #: src/customer/create/WizardFormSecondPage.tsx
 #: src/customer/details/CustomerDetailsPanel.tsx
+#: src/marketplace/landing/LandingMap.tsx
 #: src/openstack/openstack-floating-ips/OpenStackFloatingIpSummary.tsx
 msgid "Address"
 msgstr ""
@@ -634,6 +635,10 @@ msgstr ""
 
 #: src/marketplace/category/filters/AttributeFilterListDialog.tsx
 msgid "Attributes filter"
+msgstr ""
+
+#: src/user/list/UserEvents.tsx
+msgid "Audit Logs"
 msgstr ""
 
 #: src/offering/OfferingTabs.tsx
@@ -2474,12 +2479,16 @@ msgstr ""
 msgid "Generate password"
 msgstr ""
 
-#: src/marketplace/orders/item/list/OrderItemsListPlaceholder.tsx
-msgid "Go to marketplace"
+#: src/navigation/workspace/SelectWorkspaceDialog.tsx
+msgid "Go To My Profile"
 msgstr ""
 
-#: src/navigation/workspace/SelectWorkspaceDialog.tsx
-msgid "Go to my profile"
+#: src/marketplace/landing/LandingMap.tsx
+msgid "Go To Offering"
+msgstr ""
+
+#: src/marketplace/orders/item/list/OrderItemsListPlaceholder.tsx
+msgid "Go to marketplace"
 msgstr ""
 
 #: src/navigation/cookies/CookiesConsent.tsx
@@ -3240,7 +3249,7 @@ msgid "Manage security groups"
 msgstr ""
 
 #: src/user/list/UserDashboard.tsx
-msgid "Managed projects"
+msgid "Managed Projects"
 msgstr ""
 
 #: src/marketplace/offerings/create/ManagementSummary.tsx
@@ -3252,6 +3261,7 @@ msgid "Manager in:"
 msgstr ""
 
 #: src/marketplace/details/utils.ts
+#: src/marketplace/landing/LandingPage.tsx
 #: src/marketplace/landing/LandingPageContainer.tsx
 #: src/marketplace/sidebar.ts
 msgid "Marketplace"
@@ -3506,6 +3516,7 @@ msgstr ""
 #: src/marketplace-script/EnvironmentVariablePanel.tsx
 #: src/marketplace/details/OfferingResourcesList.tsx
 #: src/marketplace/details/plan/PlanDetails.tsx
+#: src/marketplace/landing/LandingMap.tsx
 #: src/marketplace/offerings/AddOfferingScreenshotDialog.tsx
 #: src/marketplace/offerings/OfferingScreenshotsList.tsx
 #: src/marketplace/offerings/OfferingsList.tsx
@@ -4218,7 +4229,7 @@ msgid "Overview of {project} project"
 msgstr ""
 
 #: src/user/list/UserDashboard.tsx
-msgid "Owned organizations"
+msgid "Owned Organizations"
 msgstr ""
 
 #: src/customer/team/CustomerUsersList.tsx
@@ -5803,8 +5814,11 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: src/marketplace/category/filters/FilterBar.tsx
 #: src/marketplace/landing/LandingPage.tsx
+msgid "Search for apps and services"
+msgstr ""
+
+#: src/marketplace/category/filters/FilterBar.tsx
 msgid "Search for apps and services..."
 msgstr ""
 

@@ -16,7 +16,7 @@ export const ProjectTablePlaceholder = () => (
     action={
       <Link
         state="organization.createProject"
-        className="btn btn-success btn-md"
+        className="btn btn-primary btn-md"
       >
         {translate('Create your first project')}
       </Link>

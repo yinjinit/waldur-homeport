@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Panel } from '@waldur/core/Panel';
 import { translate } from '@waldur/i18n';
 import { useTitle } from '@waldur/navigation/title';
 
@@ -10,12 +11,12 @@ export const UserListView = () => {
   useTitle(translate('Users'));
   return (
     <>
-      <div className="ibox-content m-b-sm border-bottom">
+      <Panel className="m-b-sm border-bottom">
         <UserFilter />
-      </div>
-      <div className="ibox-content">
+      </Panel>
+      <Panel>
         <UserList />
-      </div>
+      </Panel>
     </>
   );
 };

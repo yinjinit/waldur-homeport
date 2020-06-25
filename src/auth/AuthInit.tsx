@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import useAsync from 'react-use/lib/useAsync';
 
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
+import { Panel } from '@waldur/core/Panel';
 import { ENV } from '@waldur/core/services';
 import { translate } from '@waldur/i18n';
 import { showError, showSuccess } from '@waldur/store/coreSaga';
@@ -55,9 +56,9 @@ export const AuthInit = () => {
       </div>
       <div className="row initial-data-page">
         <div className="ibox col-md-offset-2 col-md-8 col-lg-6 col-lg-offset-3">
-          <div className="ibox-content">
+          <Panel>
             <UserEditContainer user={user} onSave={onSave} initial={true} />
-          </div>
+          </Panel>
         </div>
       </div>
     </div>

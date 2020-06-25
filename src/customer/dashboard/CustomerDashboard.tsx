@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { Col, Row, Grid } from 'react-bootstrap/lib';
+import { Col, Row } from 'react-bootstrap/lib';
 import useAsync from 'react-use/lib/useAsync';
 
 import { EChart } from '@waldur/core/EChart';
 import { LoadingSpinner } from '@waldur/core/LoadingSpinner';
+import { Panel } from '@waldur/core/Panel';
 import { Widget } from '@waldur/core/Widget';
 import { CategoryResourcesList } from '@waldur/dashboard/CategoryResourcesList';
 import { DashboardCounter } from '@waldur/dashboard/DashboardCounter';
+import { DashboardHeader } from '@waldur/dashboard/DashboardHeader';
 import { isFeatureVisible } from '@waldur/features/connect';
 import { translate } from '@waldur/i18n';
 import { useTitle } from '@waldur/navigation/title';
@@ -25,24 +27,19 @@ export const CustomerDashboard = (props: CustomerDashboardProps) => {
   const { loading, value } = useAsync(() => loadSummary(props.customer), [
     props.customer,
   ]);
-  const resProps = {
-    title: translate('Resources'),
-  };
 
   useTitle(translate('Dashboard'));
 
   return (
     <>
-      <Grid fluid>
-        <h1>{translate('Welcome, {user}!', { user: props.user.full_name })}</h1>
-        <small>
-          {translate('Overview of {organization} organization', {
-            organization: props.customer.name,
-          })}
-        </small>
-      </Grid>
+      <DashboardHeader
+        title={translate('Welcome, {user}!', { user: props.user.full_name })}
+        subtitle={translate('Overview of {organization} organization', {
+          organization: props.customer.name,
+        })}
+      />
 
-      <div className="wrapper wrapper-content animated fadeInRight">
+      <div className="animated fadeInRight">
         {loading ? (
           <LoadingSpinner />
         ) : Array.isArray(value) ? (
@@ -74,7 +71,9 @@ export const CustomerDashboard = (props: CustomerDashboardProps) => {
 
         <Row className="m-t-lg">
           <Col lg={12}>
-            <CustomerResourcesList {...resProps} />
+            <Panel title={translate('Resources')}>
+              <CustomerResourcesList />
+            </Panel>
           </Col>
         </Row>
 

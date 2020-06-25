@@ -24,15 +24,13 @@ body.full-height-layout #page-wrapper {
 
 body.boxed-layout {
   background: $boxed-background;
-}
 
-body.boxed-layout #wrapper {
-  background-color: #2f4050;
-  max-width: $boxed-width;
-  margin: 0 auto;
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
+  #wrapper {
+    background-color: #2f4050;
+    max-width: $boxed-width;
+    margin: 0 auto;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
+  }
 }
 
 .top-navigation.boxed-layout #wrapper,
@@ -52,16 +50,13 @@ body.boxed-layout #wrapper {
 a {
   cursor: pointer;
   color: $navy;
+  text-decoration: none;
 
   &:hover,
   &:focus {
     color: darken($navy, 10%);
+    text-decoration: none;
   }
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
 }
 
 .border-bottom {
@@ -306,7 +301,6 @@ body.body-small .footer.fixed {
 .page-heading {
   border-top: 0;
   padding: 0 10px 20px 10px;
-  margin-bottom: 30px;
   border-bottom: 1px solid $border-color;
 }
 
@@ -315,10 +309,55 @@ body.body-small .footer.fixed {
   margin-bottom: 5px;
 }
 
+.Select {
+  .Select-control {
+    height: 30px;
+    border-radius: 0;
+
+    @include transition(all 0.4s);
+
+    .Select-input {
+      height: 28px;
+
+      > input {
+        padding: 5px 0 6px;
+      }
+    }
+
+    .Select-arrow-zone {
+      padding-right: 0;
+    }
+  }
+
+  &.is-focused {
+    > .Select-control {
+      border-color: $navy !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.Select-placeholder,
+.Select--single > .Select-control .Select-value {
+  line-height: 28px;
+}
+
+.Select-menu-outer {
+  margin-top: 1px;
+}
+
+.table-page-size {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 60px;
+  margin-bottom: 8px;
+}
+
 /* TABLES */
 $trows: thead, tbody, tfoot;
 $tcols: th, td;
 $table-border: #ebebeb;
+$dt: dataTables;
 
 table.table {
   color: #212529;
@@ -372,7 +411,7 @@ table.dataTable {
     #{$tcol} {
       box-sizing: content-box;
 
-      &.dataTables_empty {
+      &.#{$dt}_empty {
         text-align: center;
       }
     }
@@ -380,33 +419,17 @@ table.dataTable {
 
   thead {
     > tr {
-      > th.sorting_asc {
-        padding-right: 30px;
-      }
-      > th.sorting_desc {
-        padding-right: 30px;
-      }
-      > th.sorting {
-        padding-right: 30px;
-      }
-      > td.sorting_asc {
-        padding-right: 30px;
-      }
-      > td.sorting_desc {
-        padding-right: 30px;
-      }
+      > th.sorting_asc,
+      > th.sorting_desc,
+      > th.sorting,
+      > td.sorting_asc,
+      > td.sorting_desc,
       > td.sorting {
         padding-right: 30px;
       }
-      > th {
-        &:active {
-          outline: none;
-        }
-      }
-      > td {
-        &:active {
-          outline: none;
-        }
+      > th:active,
+      > td:active {
+        outline: none;
       }
     }
     .sorting {
@@ -476,10 +499,41 @@ table.dataTable {
       }
     }
   }
+
+  &.table-bordered {
+    th {
+      border-left-width: 0;
+
+      &:last-child {
+        border-right-width: 0;
+        border-right-width: 0;
+      }
+    }
+
+    td {
+      border-left-width: 0;
+
+      &:last-child {
+        border-right-width: 0;
+        border-right-width: 0;
+      }
+    }
+
+    tbody {
+      th {
+        border-bottom-width: 0;
+      }
+      td {
+        border-bottom-width: 0;
+      }
+    }
+  }
 }
 
-div.dataTables_wrapper {
-  div.dataTables_length {
+div.#{$dt}_wrapper {
+  div.#{$dt}_length {
+    float: left;
+
     label {
       font-weight: normal;
       text-align: left;
@@ -492,13 +546,14 @@ div.dataTables_wrapper {
     }
   }
 
-  div.dataTables_filter {
+  div.#{$dt}_filter {
     text-align: right;
 
     label {
       font-weight: normal;
       white-space: nowrap;
       text-align: left;
+      margin-right: 5px;
     }
 
     input {
@@ -508,13 +563,12 @@ div.dataTables_wrapper {
     }
   }
 
-  div.dataTables_info {
+  div.#{$dt}_info {
     padding-top: 8px;
     white-space: nowrap;
-    margin-top: 3px;
   }
 
-  div.dataTables_paginate {
+  div.#{$dt}_paginate {
     margin: 0;
     white-space: nowrap;
     text-align: right;
@@ -525,7 +579,7 @@ div.dataTables_wrapper {
     }
   }
 
-  div.dataTables_processing {
+  div.#{$dt}_processing {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -537,41 +591,12 @@ div.dataTables_wrapper {
   }
 }
 
-table.table-bordered.dataTable {
-  th {
-    border-left-width: 0;
-
-    &:last-child {
-      border-right-width: 0;
-      border-right-width: 0;
-    }
-  }
-
-  td {
-    border-left-width: 0;
-
-    &:last-child {
-      border-right-width: 0;
-      border-right-width: 0;
-    }
-  }
-
-  tbody {
-    th {
-      border-bottom-width: 0;
-    }
-    td {
-      border-bottom-width: 0;
-    }
-  }
-}
-
 .table-hover > tbody > tr:hover {
   background-color: rgba(0, 0, 0, 0.075);
 }
 
 div.table-responsive {
-  > div.dataTables_wrapper {
+  > div.#{$dt}_wrapper {
     > div.row {
       margin: 0;
       > div[class^='col-'] {
@@ -688,20 +713,20 @@ div.dt-button-background {
 }
 
 @media screen and (max-width: 767px) {
-  div.dataTables_wrapper {
-    div.dataTables_length {
+  div.#{$dt}_wrapper {
+    div.#{$dt}_length {
       text-align: center;
     }
 
-    div.dataTables_filter {
+    div.#{$dt}_filter {
       text-align: center;
     }
 
-    div.dataTables_info {
+    div.#{$dt}_info {
       text-align: center;
     }
 
-    div.dataTables_paginate {
+    div.#{$dt}_paginate {
       text-align: center;
     }
   }
@@ -1002,7 +1027,6 @@ table.table-mail tr td {
   margin: 0 0 7px;
   padding: 0;
   text-overflow: ellipsis;
-  float: left;
 }
 
 .ibox-title .label {
@@ -1800,4 +1824,29 @@ body.mini-navbar.fixed-sidebar .logo-element {
 
 .fullscreen-video .animated {
   animation: none;
+}
+
+// Workspace Toggle
+.select-workspace-toggle {
+  padding: 4px 12px;
+  font-size: 14px;
+  float: left;
+  margin: 14px 5px 5px 0;
+}
+
+.select-workspace-dialog__tooltip--order {
+  z-index: 2100;
+}
+
+.workspace-listing {
+  .provider-icon {
+    float: right;
+    position: relative;
+    top: 1px;
+    right: 10px;
+    font-size: 18px;
+  }
+  .tooltip {
+    z-index: 10000;
+  }
 }

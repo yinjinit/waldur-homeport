@@ -1,7 +1,6 @@
 import { truncate } from '@waldur/core/utils';
 
 import template from './select-workspace-toggle.html';
-import './select-workspace-toggle.scss';
 
 const workspaceIconClasses = {
   organization: 'fa-sitemap',

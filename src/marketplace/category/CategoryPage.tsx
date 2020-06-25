@@ -23,14 +23,14 @@ export const CategoryPage = () => {
         </MediaQuery>
       </Col>
       <Col lg={9}>
-        <div className="m-b-md p-sm gray-bg">
+        <Row className="m-b-sm p-sm gray-bg">
           <div style={{ display: 'flex' }}>
             <FilterBarContainer />
             <MediaQuery maxWidth={768}>
               <MobileFilterActions />
             </MediaQuery>
           </div>
-        </div>
+        </Row>
         <OfferingGridContainer />
       </Col>
     </Row>

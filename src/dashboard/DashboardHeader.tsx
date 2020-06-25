@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Grid } from 'react-bootstrap/lib';
 
 interface DashboardHeaderProps {
   title: React.ReactNode;
@@ -8,9 +7,9 @@ interface DashboardHeaderProps {
 }
 
 export const DashboardHeader = (props: DashboardHeaderProps) => (
-  <Grid fluid className="border-bottom white-bg dashboard-header">
-    <h2>{props.title}</h2>
+  <div className="dashboard-header">
+    <h1>{props.title}</h1>
     <small>{props.subtitle}</small>
     {props.children}
-  </Grid>
+  </div>
 );

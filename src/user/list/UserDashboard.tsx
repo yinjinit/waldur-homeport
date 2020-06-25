@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { Row, Col } from 'react-bootstrap/lib';
 import { useSelector } from 'react-redux';
 
+import { Panel } from '@waldur/core/Panel';
 import { CustomerCreatePromptContainer } from '@waldur/customer/create/CustomerCreatePromptContainer';
 import { renderCustomerCreatePrompt } from '@waldur/customer/create/selectors';
 import { translate } from '@waldur/i18n';
@@ -13,28 +15,33 @@ import { ProjectPermissions } from './ProjectPermissions';
 export const UserDashboard: React.FC = () => {
   useTitle(translate('User dashboard'));
   const renderPrompt = useSelector(renderCustomerCreatePrompt);
+
   return (
-    <div className="wrapper wrapper-content">
+    <>
       {renderPrompt && (
-        <div className="row">
-          <div className="col-md-12">
+        <Row>
+          <Col md={12}>
             <CustomerCreatePromptContainer />
-          </div>
-        </div>
+          </Col>
+        </Row>
       )}
-      <div className="row">
-        <div className="col-md-6">
-          <CustomerPermissions title={translate('Owned organizations')} />
-        </div>
-        <div className="col-md-6">
-          <ProjectPermissions title={translate('Managed projects')} />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-12">
+      <Row>
+        <Col md={6}>
+          <Panel title={translate('Owned Organizations')}>
+            <CustomerPermissions />
+          </Panel>
+        </Col>
+        <Col md={6}>
+          <Panel title={translate('Managed Projects')}>
+            <ProjectPermissions />
+          </Panel>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={12}>
           <CurrentUserEvents />
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </>
   );
 };

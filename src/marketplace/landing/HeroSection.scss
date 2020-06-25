@@ -1,32 +1,53 @@
-.marketplace-hero__background {
-  height: 200px;
-  width: 100%;
-  background-color: #2f4050;
-  background: url(./marketplace-background.jpg);
-  background-position: center top;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: table;
-  margin-bottom: 20px;
+$hero: marketplace-hero;
+
+.#{$hero}__section {
+  margin: -21px -30px 30px;
 }
 
-.marketplace-hero__table {
-  display: table-cell;
-  vertical-align: middle;
+.#{$hero}__wrapper {
+  position: relative;
+  min-height: 500px;
+  max-height: 70vh;
 }
 
-.marketplace-hero__main {
-  max-width: 800px;
-  margin-right: auto;
-  margin-left: auto;
+.#{$hero}__header {
+  width: 500px;
+  max-width: 80%;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 111;
+  background: rgba(26, 179, 148, 0.8);
+  padding: 0 15px 15px;
+  border-radius: 5px;
 
   h1 {
-    color: #fff;
-    font-size: 44px;
-    line-height: 42px;
-    padding-bottom: 10px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  small {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+.#{$hero}__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  > .leaflet-container {
+    width: 100%;
+    height: 100%;
   }
 }

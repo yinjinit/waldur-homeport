@@ -10,7 +10,7 @@ interface TablePaginationProps extends PaginationProps {
 }
 
 export const TablePagination = (props: TablePaginationProps) => (
-  <div className="text-right">
+  <div className="dataTables_paginate">
     <Pagination
       prev={translate('Previous')}
       next={translate('Next')}

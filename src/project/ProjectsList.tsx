@@ -3,6 +3,7 @@ import { compose } from 'redux';
 
 import { formatDateTime } from '@waldur/core/dateUtils';
 import { Link } from '@waldur/core/Link';
+import { Panel } from '@waldur/core/Panel';
 import { defaultCurrency } from '@waldur/core/services';
 import { withTranslation } from '@waldur/i18n';
 import { useTitle } from '@waldur/navigation/title';
@@ -62,17 +63,19 @@ export const TableComponent = props => {
   ]);
 
   return (
-    <Table
-      {...props}
-      columns={columns}
-      verboseName={translate('projects')}
-      hasQuery={true}
-      showPageSizeSelector={true}
-      placeholderComponent={<ProjectTablePlaceholder />}
-      actions={<ProjectCreateButton />}
-      expandableRow={ProjectExpandableRowContainer}
-      enableExport={true}
-    />
+    <Panel>
+      <Table
+        {...props}
+        columns={columns}
+        verboseName={translate('projects')}
+        hasQuery={true}
+        showPageSizeSelector={true}
+        placeholderComponent={<ProjectTablePlaceholder />}
+        actions={<ProjectCreateButton />}
+        expandableRow={ProjectExpandableRowContainer}
+        enableExport={true}
+      />
+    </Panel>
   );
 };
 

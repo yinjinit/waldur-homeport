@@ -3,8 +3,6 @@ import * as React from 'react';
 
 import { translate } from '@waldur/i18n';
 
-import './TableQuery.scss';
-
 interface Props {
   query: string;
   setQuery: (query: string) => void;
@@ -33,9 +31,9 @@ export class TableQuery extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="text-right table-query">
+      <div className="dataTables_filter">
         <label>
-          {translate('Search')}
+          {translate('Search')}:
           <input
             type="search"
             className="form-control input-sm"

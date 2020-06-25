@@ -8,18 +8,13 @@ $check-icon: $fa-var-check !default;
 $input-border: #ccc;
 $input-color: #fff;
 $input-bg-disabled: #fff;
-$brand-primary: darken(#428bca, 6.5%); // #337ab7
-$brand-success: #5cb85c;
-$brand-info: #5bc0de;
-$brand-warning: #f0ad4e;
-$brand-danger: #d9534f;
 
-@mixin checkbox-variant($parent, $color) {
+@mixin checkbox-variant($parent) {
   #{$parent} input[type='checkbox']:checked + label,
   #{$parent} input[type='radio']:checked + label {
     &::before {
-      background-color: $color;
-      border-color: $color;
+      background-color: #1ab394;
+      border-color: #1ab394;
     }
     &::after {
       color: #fff;
@@ -27,12 +22,12 @@ $brand-danger: #d9534f;
   }
 }
 
-@mixin checkbox-variant-indeterminate($parent, $color) {
+@mixin checkbox-variant-indeterminate($parent) {
   #{$parent} input[type='checkbox']:indeterminate + label,
   #{$parent} input[type='radio']:indeterminate + label {
     &::before {
-      background-color: $color;
-      border-color: $color;
+      background-color: #1ab394;
+      border-color: #1ab394;
     }
     &::after {
       background-color: #fff;
@@ -117,14 +112,5 @@ $brand-danger: #d9534f;
   }
 }
 
-@include checkbox-variant('.checkbox-primary', $brand-primary);
-@include checkbox-variant('.checkbox-danger', $brand-danger);
-@include checkbox-variant('.checkbox-info', $brand-info);
-@include checkbox-variant('.checkbox-warning', $brand-warning);
-@include checkbox-variant('.checkbox-success', $brand-success);
-
-@include checkbox-variant-indeterminate('.checkbox-primary', $brand-primary);
-@include checkbox-variant-indeterminate('.checkbox-danger', $brand-danger);
-@include checkbox-variant-indeterminate('.checkbox-info', $brand-info);
-@include checkbox-variant-indeterminate('.checkbox-warning', $brand-warning);
-@include checkbox-variant-indeterminate('.checkbox-success', $brand-success);
+@include checkbox-variant('.awesome-checkbox');
+@include checkbox-variant-indeterminate('.awesome-checkbox');

@@ -16,7 +16,7 @@ export const OrderItemslistTablePlaceholder = () => (
     action={
       <Link
         state="marketplace-landing-customer"
-        className="btn btn-success btn-md"
+        className="btn btn-primary btn-md"
       >
         {translate('Go to marketplace')}
       </Link>
