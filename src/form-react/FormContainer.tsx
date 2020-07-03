@@ -12,7 +12,7 @@ interface FormContainerProps {
 }
 
 export const FormContainer: React.FC<FormContainerProps> = props => (
-  <div>
+  <>
     {React.Children.map(props.children, (input: any) =>
       input && input.props && input.props.name ? (
         <Field
@@ -30,7 +30,7 @@ export const FormContainer: React.FC<FormContainerProps> = props => (
         input
       ),
     )}
-  </div>
+  </>
 );
 
 FormContainer.defaultProps = {

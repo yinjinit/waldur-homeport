@@ -56,6 +56,7 @@ export const states: StateDeclaration[] = [
     data: {
       auth: true,
       bodyClass: 'old',
+      hideHeader: true,
     },
     resolve: {
       currentUser: () => UsersService.getCurrentUser(),

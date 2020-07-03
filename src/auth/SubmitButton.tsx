@@ -7,6 +7,7 @@ interface SubmitButtonProps {
   label?: string;
   bsStyle?: string;
   block?: boolean;
+  className?: string;
 }
 
 export const SubmitButton: React.FC<SubmitButtonProps> = ({
@@ -16,12 +17,14 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   children,
   bsStyle,
   block,
+  className,
 }) => (
   <Button
     type="submit"
     bsStyle={bsStyle}
     block={block}
     disabled={submitting || invalid}
+    className={className}
   >
     {submitting && (
       <>

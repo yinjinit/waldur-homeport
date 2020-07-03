@@ -246,3 +246,46 @@ table.marker-popup {
     margin-top: 5px;
   }
 }
+
+/* steps */
+.steps ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    float: left;
+    padding: 0;
+
+    a {
+      display: block;
+      width: auto;
+      margin: 0 0.5em 0.5em 0;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    &.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      transition: all, 0.2s, ease;
+
+      a {
+        background: #eee;
+        color: #aaa;
+        cursor: default;
+        background-color: white;
+      }
+    }
+
+    &.current {
+      a {
+        background: #1ab394;
+        color: #fff;
+        cursor: default;
+      }
+    }
+  }
+}

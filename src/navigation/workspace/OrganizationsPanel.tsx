@@ -9,24 +9,24 @@ import { getUser, checkCustomerUser } from '@waldur/workspace/selectors';
 
 import { BaseList } from './BaseList';
 import { FilterGroup } from './FilterGroup';
-import { useCreateOrganization, useOrganizationFilter } from './utils';
+import { useOrganizationFilter } from './utils';
 
-const CreateOrganizationButton = () => {
-  const [enabled, onClick] = useCreateOrganization();
-  if (!enabled) {
-    return null;
-  }
-  return (
-    <a
-      className="pull-right btn btn-sm btn-default"
-      onClick={onClick}
-      id="add-new-organization"
-    >
-      <i className="fa fa-plus" /> {translate('Add new')}{' '}
-      <span className="hidden-xs">{translate('organization')}</span>
-    </a>
-  );
-};
+// const CreateOrganizationButton = () => {
+//   const [enabled, onClick] = useCreateOrganization();
+//   if (!enabled) {
+//     return null;
+//   }
+//   return (
+//     <a
+//       className="pull-right btn btn-sm btn-default"
+//       onClick={onClick}
+//       id="add-new-organization"
+//     >
+//       <i className="fa fa-plus" /> {translate('Add new')}{' '}
+//       <span className="hidden-xs">{translate('organization')}</span>
+//     </a>
+//   );
+// };
 
 const OrganizationsHeader = ({ organizations }) => (
   <h3 className="m-b-md">
@@ -110,7 +110,7 @@ export const OrganizationsPanel = ({
 
   return (
     <Col className="workspace-listing m-b-md" md={6} xs={12}>
-      <CreateOrganizationButton />
+      {/* <CreateOrganizationButton /> */}
       <OrganizationsHeader organizations={organizations} />
       <FilterGroup
         groupId="organization-search-box"

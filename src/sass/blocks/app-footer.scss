@@ -42,10 +42,17 @@
   float: right;
   @include clear-list-inline;
   li + li {
+    position: relative;
+    padding-left: 11px;
+
     &:before {
-      @include inline-middle;
-      content: '|';
-      opacity: 0.4;
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 3px;
+      bottom: 2px;
+      width: 1px;
+      background: #949494;
     }
   }
   @include bp(xs) {

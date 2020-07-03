@@ -1,14 +1,10 @@
 import * as React from 'react';
-import Button from 'react-bootstrap/lib/Button';
-import ModalBody from 'react-bootstrap/lib/ModalBody';
-import ModalFooter from 'react-bootstrap/lib/ModalFooter';
-import ModalHeader from 'react-bootstrap/lib/ModalHeader';
-import ModalTitle from 'react-bootstrap/lib/ModalTitle';
+import { Row, Button, Col } from 'react-bootstrap/lib';
 import { reduxForm } from 'redux-form';
 
 import { SubmitButton } from '@waldur/auth/SubmitButton';
+import { Panel } from '@waldur/core/Panel';
 import { translate } from '@waldur/i18n';
-import { CloseDialogButton } from '@waldur/modal/CloseDialogButton';
 
 import { StepsList } from './StepsList';
 
@@ -26,28 +22,25 @@ export const WizardForm = reduxForm<{}, WizardFormProps>({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
 })(props => (
-  <form onSubmit={props.handleSubmit(props.onSubmit)}>
-    <ModalHeader>
-      <ModalTitle>{translate('Create organization')}</ModalTitle>
-    </ModalHeader>
-    <ModalBody>
-      <div className="wizard-big wizard clearfix">
+  <div className="wrapper">
+    <Row className="m-t-md">
+      <Col md={8} mdOffset={2} lg={6} lgOffset={3}>
+        <h2>{translate('Create Organization')}</h2>
         <StepsList steps={props.steps} step={props.step} />
-        <h3>{props.steps[props.step]}</h3>
-        <div className="content clearfix">{props.children}</div>
-      </div>
-    </ModalBody>
-    <ModalFooter>
-      {props.step == 0 ? (
-        <CloseDialogButton />
-      ) : (
-        <Button onClick={props.onPrev}>{translate('Previous')}</Button>
-      )}
-      <SubmitButton
-        block={false}
-        submitting={props.submitting}
-        label={props.submitLabel}
-      />
-    </ModalFooter>
-  </form>
+        <Panel title={props.steps[props.step]}>
+          <form onSubmit={props.handleSubmit(props.onSubmit)}>
+            {props.children}
+            <hr />
+            <Button onClick={props.onPrev}>{translate('Previous')}</Button>
+            <SubmitButton
+              block={false}
+              submitting={props.submitting}
+              label={props.submitLabel}
+              className="m-l-sm"
+            />
+          </form>
+        </Panel>
+      </Col>
+    </Row>
+  </div>
 ));

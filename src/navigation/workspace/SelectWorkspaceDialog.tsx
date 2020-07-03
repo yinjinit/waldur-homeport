@@ -54,7 +54,7 @@ export const SelectWorkspaceDialog = () => {
       </div>
       <div className="modal-footer">
         <Button
-          bsStyle="warning"
+          bsStyle="primary"
           bsSize="small"
           onClick={() => router.stateService.go('profile.details')}
         >

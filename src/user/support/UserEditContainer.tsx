@@ -16,7 +16,6 @@ import {
 import { UserEditForm } from '@waldur/user/support/UserEditForm';
 import { UserDetails } from '@waldur/workspace/types';
 
-import '../user-edit.scss';
 import * as actions from './actions';
 import { EmailChangeForm } from './EmailChangeForm';
 
@@ -30,8 +29,8 @@ const UserUpdateComponent: React.FC<UserUpdateComponentProps> = props => {
     return <EmailChangeForm user={props.user} />;
   }
   return (
-    <div className="row">
-      <div className="col-sm-2 col-xs-12 user-edit">
+    <div className="row m-t-md">
+      <div className="col-sm-2 user-edit">
         <div className="logo">
           <div className="img-wrapper">
             <Gravatar email={props.user.email} size={100} />

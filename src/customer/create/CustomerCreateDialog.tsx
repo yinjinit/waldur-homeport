@@ -35,9 +35,13 @@ const CUSTOMER_FIELDS = [
 
 interface OwnProps {
   resolve: { role: string };
+  onBack: () => void;
 }
 
-export const CustomerCreateDialog: React.FC<OwnProps> = ({ resolve }) => {
+export const CustomerCreateDialog: React.FC<OwnProps> = ({
+  resolve,
+  onBack,
+}) => {
   const dispatch = useDispatch();
   const user = useSelector(getUser);
   const router = useRouter();
@@ -78,9 +82,10 @@ export const CustomerCreateDialog: React.FC<OwnProps> = ({ resolve }) => {
         dispatch(showSuccess(translate('Organization has been created.')));
         UsersService.resetCurrentUser();
         await UsersService.getCurrentUser();
-        router.stateService.go('organization.dashboard', {
-          uuid: customer.uuid,
-        });
+        // router.stateService.go('organization.dashboard', {
+        //   uuid: customer.uuid,
+        // });
+        router.stateService.go('profile.details');
         dispatch(reset('CustomerCreateDialog'));
       } catch (e) {
         showErrorResponse(e, translate('Could not create organization'));
@@ -88,5 +93,5 @@ export const CustomerCreateDialog: React.FC<OwnProps> = ({ resolve }) => {
     },
     [dispatch, router, user, resolve.role],
   );
-  return <CustomerCreateForm onSubmit={createOrganization} />;
+  return <CustomerCreateForm onSubmit={createOrganization} onBack={onBack} />;
 };

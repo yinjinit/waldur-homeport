@@ -4,7 +4,14 @@ import Qs from 'qs';
 import { ngInjector } from '@waldur/core/services';
 import { closeModalDialog } from '@waldur/modal/actions';
 import store from '@waldur/store/store';
+import { CustomersService } from '@waldur/customer/services/CustomersService';
 import { UsersService } from '@waldur/user/UsersService';
+import {
+  getCustomer,
+  isStaff,
+  getUserCustomerPermissions,
+} from '@waldur/workspace/selectors';
+import { canManageCustomer } from '@waldur/customer/create/selectors';
 
 // @ngInject
 function initAuthToken($auth, $http) {
@@ -53,7 +60,15 @@ function requireAuth($transitions, $auth, $rootScope, features) {
     },
     transition =>
       UsersService.isCurrentUserValid().then(result => {
-        if (result) {
+        console.log(
+          'Can manage customer:',
+          canManageCustomer(store.getState()),
+        );
+        if (
+          result &&
+          isStaff(store.getState()) &&
+          getUserCustomerPermissions(store.getState()).length > 0
+        ) {
           if (transition.to().name == 'initialdata') {
             return transition.router.stateService.target('profile.details');
           }

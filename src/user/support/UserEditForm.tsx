@@ -56,7 +56,7 @@ interface UserEditFormProps extends TranslateProps, InjectedFormProps {
 export const PureUserEditForm = (props: UserEditFormProps) => (
   <form
     onSubmit={props.handleSubmit(props.updateUser)}
-    className="form-horizontal col-sm-10 col-xs-12"
+    className="form-horizontal col-sm-10"
   >
     <FormContainer
       submitting={props.submitting}

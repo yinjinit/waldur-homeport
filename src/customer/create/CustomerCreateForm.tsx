@@ -11,12 +11,20 @@ const WizardForms = [WizardFormFirstPage, WizardFormSecondPage];
 export const CustomerCreateForm = props => {
   const [step, setStep] = React.useState(1);
   const steps = [translate('General information')];
+
   if (!ENV.hideOrganizationBillingStep) {
     steps.push(translate('Billing details'));
   }
+
   const isLast = step === steps.length;
   const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
+  const prevStep = () => {
+    if (step == 1) {
+      props.onBack();
+    } else {
+      setStep(step - 1);
+    }
+  };
   const submitLabel = isLast
     ? translate('Create organization')
     : translate('Next');

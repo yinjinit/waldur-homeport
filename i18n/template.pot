@@ -251,10 +251,6 @@ msgstr ""
 msgid "Add member"
 msgstr ""
 
-#: src/navigation/workspace/OrganizationsPanel.tsx
-msgid "Add new"
-msgstr ""
-
 #: src/marketplace/offerings/OfferingsListTablePlaceholder.tsx
 msgid "Add new offering"
 msgstr ""
@@ -1327,6 +1323,10 @@ msgstr ""
 msgid "Create Network adapter"
 msgstr ""
 
+#: src/customer/create/WizardForm.tsx
+msgid "Create Organization"
+msgstr ""
+
 #: src/azure/sql/CreateDatabaseAction.ts
 msgid "Create SQL database in PostgreSQL server"
 msgstr ""
@@ -1382,7 +1382,6 @@ msgid "Create notification"
 msgstr ""
 
 #: src/customer/create/CustomerCreateForm.tsx
-#: src/customer/create/WizardForm.tsx
 msgid "Create organization"
 msgstr ""
 
@@ -8500,10 +8499,6 @@ msgstr ""
 
 #: src/marketplace/orders/item/list/ResourceOrderItems.tsx
 msgid "order items"
-msgstr ""
-
-#: src/navigation/workspace/OrganizationsPanel.tsx
-msgid "organization"
 msgstr ""
 
 #: src/resource/support/SharedProviderCustomers.tsx
