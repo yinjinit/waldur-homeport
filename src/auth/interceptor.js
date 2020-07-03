@@ -60,10 +60,6 @@ function requireAuth($transitions, $auth, $rootScope, features) {
     },
     transition =>
       UsersService.isCurrentUserValid().then(result => {
-        console.log(
-          'Can manage customer:',
-          canManageCustomer(store.getState()),
-        );
         if (
           result &&
           isStaff(store.getState()) &&
