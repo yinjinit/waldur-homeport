@@ -352,7 +352,6 @@ msgstr ""
 
 #: src/customer/create/WizardFormSecondPage.tsx
 #: src/customer/details/CustomerDetailsPanel.tsx
-#: src/marketplace/landing/LandingMap.tsx
 #: src/openstack/openstack-floating-ips/OpenStackFloatingIpSummary.tsx
 msgid "Address"
 msgstr ""
@@ -956,6 +955,7 @@ msgid "Categories"
 msgstr ""
 
 #: src/customer/dashboard/CustomerResourcesList.tsx
+#: src/marketplace/landing/LandingMap.tsx
 #: src/marketplace/offerings/OfferingsList.tsx
 #: src/marketplace/offerings/create/DescriptionStep.tsx
 #: src/marketplace/offerings/create/DescriptionSummary.tsx

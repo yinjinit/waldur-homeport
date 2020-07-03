@@ -26,6 +26,7 @@ class PureLandingPage extends React.Component<LandingPageProps> {
   render() {
     const mapProps = {
       offerings: this.props.offerings,
+      categories: this.props.categories,
       gotoOffering: gotoOffering,
     };
 

@@ -4,19 +4,10 @@ import { Button } from 'react-bootstrap/lib';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { connect } from 'react-redux';
 
+import { FormattedHtml } from '@waldur/core/FormattedHtml';
 import { translate } from '@waldur/i18n';
 
 import * as actions from './store/actions';
-
-const icon = L.icon({
-  iconUrl: 'images/marker-icon.png',
-  iconSize: [24, 41],
-  iconAnchor: [12, 40],
-  popupAnchor: [0, -35],
-  shadowUrl: 'images/marker-shadow.png',
-  shadowSize: [41, 41],
-  shadowAnchor: [12, 40],
-});
 
 type Position = [number, number];
 
@@ -24,6 +15,7 @@ type Props = {
   content: string;
   position: Position;
   onClick: (uuid: any) => void;
+  iconUrl?: string;
 };
 
 type MarkerData = {
@@ -40,35 +32,67 @@ type State = {
   markers: Array<MarkerData>;
 };
 
-const PopupMarker = ({ content, position, onClick }: Props) => (
-  <Marker position={position} icon={icon}>
-    <Popup>
-      <table className="marker-popup">
-        <tbody>
-          <tr>
-            <th>{translate('Name')}: </th>
-            <td>{content['name']}</td>
-          </tr>
-          <tr>
-            <th>{translate('Address')}: </th>
-            <td>{content['address']}</td>
-          </tr>
-          <tr>
-            <td colSpan={2}>
-              <Button
-                bsSize="small"
-                bsStyle="primary"
-                onClick={() => onClick(content['uuid'])}
-              >
-                {translate('Go To Offering')}
-              </Button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </Popup>
-  </Marker>
-);
+const PopupMarker = ({ content, position, onClick, iconUrl }: Props) => {
+  const icon = L.icon({
+    iconUrl: iconUrl ? iconUrl : 'images/marker-icon.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 39],
+    popupAnchor: [0, -35],
+    shadowUrl: 'images/marker-shadow.png',
+    shadowSize: [80, 80],
+    shadowAnchor: [25, 80],
+  });
+
+  const getSections = () => {
+    const rows = [];
+
+    content['sections'].forEach((section, i) => {
+      rows.push(
+        <tr key={i}>
+          <th>{section.title}</th>
+          <td>{section.value}</td>
+        </tr>,
+      );
+    });
+
+    return rows;
+  };
+
+  return (
+    <Marker position={position} icon={icon}>
+      <Popup>
+        <table className="marker-popup">
+          <tbody>
+            <tr>
+              <th>{translate('Name')}: </th>
+              <td>{content['name']}</td>
+            </tr>
+            <tr>
+              <th>{translate('Category')}: </th>
+              <td>{content['category']}</td>
+            </tr>
+            {/* <tr>
+              <th>{translate('Address')}: </th>
+              <td>{content['address']}</td>
+            </tr> */}
+            {getSections()}
+            <tr>
+              <td colSpan={2}>
+                <Button
+                  bsSize="small"
+                  bsStyle="primary"
+                  onClick={() => onClick(content['uuid'])}
+                >
+                  {translate('Go To Offering')}
+                </Button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Popup>
+    </Marker>
+  );
+};
 
 const MarkersList = ({
   markers,
@@ -88,6 +112,7 @@ const esriGeocoder = () => import('esri-leaflet-geocoder');
 
 interface MapProps {
   offerings: Record<string, any>;
+  categories: Record<string, any>;
   gotoOffering: (offeringId: string) => void;
 }
 
@@ -100,34 +125,61 @@ class PureLandingMap extends Component<MapProps, State> {
     bounds: [],
   };
 
-  async componentDidUpdate(prevProps) {
-    const { offerings } = this.props;
+  componentDidUpdate(prevProps) {
+    const { offerings, categories } = this.props;
 
-    if (!prevProps.offerings['loaded'] && offerings['loaded']) {
-      const { bounds, markers } = this.state;
+    if (
+      !prevProps.offerings['loaded'] &&
+      offerings['loaded'] &&
+      categories['loaded']
+    ) {
+      this.loadMarkers();
+    }
+  }
 
-      for (let i = 0; i < offerings['items'].length; i++) {
-        const offering = offerings['items'][i];
+  async loadMarkers() {
+    const { offerings, categories } = this.props;
+    const { bounds, markers } = this.state;
 
-        for (const key in offering.attributes) {
-          if (key.indexOf('_Location_address') >= 0) {
-            const latlng = await this.fetchLatLng(offering.attributes[key]);
-            bounds.push([latlng['lat'], latlng['lng']]);
-            markers.push({
-              key: 'marker' + i,
-              position: [latlng['lat'], latlng['lng']],
-              content: {
-                name: offering.name,
-                address: offering.attributes[key],
-                uuid: offering.uuid,
-              },
-            });
+    for (let i = 0; i < offerings['items'].length; i++) {
+      const offering = offerings['items'][i];
+
+      for (const key in offering.attributes) {
+        if (
+          key.indexOf('_Location_address') >= 0 &&
+          offering.attributes[key] &&
+          offering.attributes[key].length > 0
+        ) {
+          const latlng = await this.fetchLatLng(offering.attributes[key]);
+          bounds.push([latlng['lat'], latlng['lng']]);
+
+          const marker = {
+            key: 'marker' + i,
+            position: [latlng['lat'], latlng['lng']],
+            content: {
+              name: offering.name,
+              address: offering.attributes[key],
+              uuid: offering.uuid,
+            },
+          };
+
+          for (let j = 0; j < categories.items.length; j++) {
+            const cat = categories.items[j];
+
+            if (cat.uuid === offering.category_uuid) {
+              marker['iconUrl'] = cat.icon;
+              marker.content['category'] = cat.title;
+              marker.content['sections'] = this.getSections(offering, cat);
+              break;
+            }
           }
+
+          markers.push(marker);
         }
       }
-
-      this.setState({ bounds: bounds });
     }
+
+    this.setState({ bounds: bounds });
   }
 
   fetchLatLng(addr) {
@@ -145,6 +197,82 @@ class PureLandingMap extends Component<MapProps, State> {
           }),
       );
     });
+  }
+
+  getSections(offering, category) {
+    const attributes = offering.attributes;
+    const sections = category.sections.filter(section =>
+      section.attributes.some(attr => attributes.hasOwnProperty(attr.key)),
+    );
+
+    const results = [];
+    const standaloneSections = sections.filter(s => s.is_standalone === true);
+
+    standaloneSections.forEach(section => {
+      section.attributes
+        .filter(attr => attributes.hasOwnProperty(attr.key))
+        .map(attr => {
+          const value = attributes[attr.key];
+          let retVal;
+
+          switch (attr.type) {
+            case 'list': {
+              const titles = [];
+
+              if (Array.isArray(value)) {
+                value.forEach(key => {
+                  const option = attr.options.find(item => item.key === key);
+                  if (option) {
+                    titles.push(option.title);
+                  }
+                });
+              }
+
+              retVal = (
+                <>
+                  {titles.map((item, index) => (
+                    <span key={index}>
+                      <i className="fa fa-check" />
+                      {` ${item}`}
+                      <br />
+                    </span>
+                  ))}
+                </>
+              );
+
+              break;
+            }
+
+            case 'boolean': {
+              const icon =
+                value === true
+                  ? 'fa fa-check text-info'
+                  : 'fa fa-times text-danger';
+              retVal = <i className={icon} />;
+              break;
+            }
+
+            case 'choice': {
+              const option = attr.options.find(item => item.key === value);
+              retVal = <>{option ? option.title : 'N/A'}</>;
+              break;
+            }
+
+            case 'html':
+              retVal = <FormattedHtml html={value.toString()} />;
+              break;
+            default:
+              retVal = value === undefined ? 'N/A' : value;
+          }
+
+          results.push({
+            title: attr.title,
+            value: retVal,
+          });
+        });
+    });
+
+    return results;
   }
 
   render() {
