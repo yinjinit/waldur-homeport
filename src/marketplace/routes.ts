@@ -33,23 +33,29 @@ import { ProviderDetails } from './service-providers/ProviderDetails';
 export const states: StateDeclaration[] = [
   {
     name: 'marketplace-landing',
-    url: 'marketplace/',
+    url: '/marketplace/',
     component: MarketplaceLanding,
-    parent: 'project',
-    data: {
-      hideBreadcrumbs: true,
-    },
   },
 
-  {
-    name: 'marketplace-landing-customer',
-    url: 'marketplace/',
-    component: MarketplaceLanding,
-    parent: 'organization',
-    data: {
-      hideBreadcrumbs: true,
-    },
-  },
+  // {
+  //   name: 'marketplace-landing',
+  //   url: 'marketplace/',
+  //   component: MarketplaceLanding,
+  //   parent: 'project',
+  //   data: {
+  //     hideBreadcrumbs: true,
+  //   },
+  // },
+
+  // {
+  //   name: 'marketplace-landing-customer',
+  //   url: 'marketplace/',
+  //   component: MarketplaceLanding,
+  //   parent: 'organization',
+  //   data: {
+  //     hideBreadcrumbs: true,
+  //   },
+  // },
 
   {
     name: 'marketplace-compare',

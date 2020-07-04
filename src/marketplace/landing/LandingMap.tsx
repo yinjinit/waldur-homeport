@@ -129,7 +129,7 @@ class PureLandingMap extends Component<MapProps, State> {
     const { offerings, categories } = this.props;
 
     if (
-      !prevProps.offerings['loaded'] &&
+      (!prevProps.offerings['loaded'] || !prevProps.categories['loaded']) &&
       offerings['loaded'] &&
       categories['loaded']
     ) {
@@ -179,7 +179,7 @@ class PureLandingMap extends Component<MapProps, State> {
       }
     }
 
-    this.setState({ bounds: bounds });
+    this.setState({ bounds: bounds, markers: markers });
   }
 
   fetchLatLng(addr) {

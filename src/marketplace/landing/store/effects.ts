@@ -4,7 +4,7 @@ import { Category } from '@waldur/marketplace/types';
 import { stateGo } from '@waldur/store/coreSaga';
 import {
   getWorkspace,
-  getCustomer,
+  // getCustomer,
   getProject,
 } from '@waldur/workspace/selectors';
 import { WorkspaceType } from '@waldur/workspace/types';
@@ -15,11 +15,11 @@ import * as actions from './actions';
 import * as constants from './constants';
 
 function* getCategories() {
-  const customer = yield select(getCustomer);
+  // const customer = yield select(getCustomer);
   const project = yield select(getProject);
   const options = {
     params: {
-      allowed_customer_uuid: customer.uuid,
+      // allowed_customer_uuid: customer.uuid,
       project_uuid: project && project.uuid,
     },
   };
@@ -32,7 +32,7 @@ function* getCategories() {
 }
 
 function* getOfferings() {
-  const customer = yield select(getCustomer);
+  // const customer = yield select(getCustomer);
   const project = yield select(getProject);
   const field = [
     'uuid',
@@ -53,7 +53,7 @@ function* getOfferings() {
     o: '-created',
     state: ['Active', 'Paused'],
     field,
-    allowed_customer_uuid: customer.uuid,
+    // allowed_customer_uuid: customer.uuid,
     project_uuid: project && project.uuid,
   };
   try {
