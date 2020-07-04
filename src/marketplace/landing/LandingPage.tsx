@@ -1,4 +1,5 @@
 import React, { StrictMode } from 'react';
+import { Grid } from 'react-bootstrap/lib';
 import { Option } from 'react-select';
 
 import { ENV } from '@waldur/core/services';
@@ -52,9 +53,11 @@ class PureLandingPage extends React.Component<LandingPageProps> {
           </StrictMode>
         </HeroSection>
 
-        <CategoriesList {...this.props.categories} />
-        <h2 className="m-b-md">{this.props.translate('Recent additions')}</h2>
-        <OfferingGrid width={2} {...this.props.offerings} />
+        <Grid>
+          <CategoriesList {...this.props.categories} />
+          <h2 className="m-b-md">{this.props.translate('Recent additions')}</h2>
+          <OfferingGrid width={2} {...this.props.offerings} />
+        </Grid>
       </>
     );
   }
