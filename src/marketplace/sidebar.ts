@@ -16,10 +16,10 @@ SidebarExtensionService.register('customer', () => {
       key: 'marketplace',
       icon: 'fa-shopping-cart',
       label: translate('Marketplace'),
-      state: 'marketplace-landing',
-      // params: {
-      //   uuid: customer.uuid,
-      // },
+      state: 'marketplace-landing-customer',
+      params: {
+        uuid: customer.uuid,
+      },
       index: 210,
     },
   ];
@@ -137,9 +137,9 @@ SidebarExtensionService.register('project', async () => {
       icon: 'fa-shopping-cart',
       label: translate('Marketplace'),
       state: 'marketplace-landing',
-      // params: {
-      //   uuid: project.uuid,
-      // },
+      params: {
+        uuid: project.uuid,
+      },
       index: 210,
     },
     {

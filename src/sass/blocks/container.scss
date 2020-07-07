@@ -2,22 +2,19 @@
   @include clearfix;
   margin: auto;
   width: auto;
-  @include property(padding, 0 60);
+  @include property(padding, 0 30);
   @include bp(xs) {
-    @include property(padding, 0);
     h1 {
       text-align: center;
     }
   }
-  // xs
-  @include bp(sm) {
-    @include property(padding, 0 10);
-  }
-  // sm
+
   @include bp(md) {
     @include property(padding, 0 30);
   }
-  // md
-}
 
-// container
+  @include bp(lg) {
+    width: 1260px;
+    @include property(padding, 0 15);
+  }
+}

@@ -8,6 +8,9 @@ import { CategoryPage } from './category/CategoryPage';
 import { ComparisonTable } from './compare/ComparisonTable';
 import { OfferingDetailsPage } from './details/DetailsPage';
 import { MarketplaceLanding } from './landing/LandingPageContainer';
+import { MarketplaceCategories } from './landing/MarketplaceCategories';
+import { MarketplaceLayout } from './landing/MarketplaceLayout';
+import { MarketplacePublic } from './landing/MarketplacePublic';
 import { OfferingCreateContainer } from './offerings/create/OfferingCreateContainer';
 import { OfferingContainer } from './offerings/details/OfferingContainer';
 import { PublicOfferingDetails } from './offerings/details/PublicOfferingDetails';
@@ -32,30 +35,65 @@ import { ProviderDetails } from './service-providers/ProviderDetails';
 
 export const states: StateDeclaration[] = [
   {
-    name: 'marketplace-landing',
+    name: 'marketplace',
     url: '/marketplace/',
-    component: MarketplaceLanding,
+    component: MarketplaceLayout,
+    abstract: true,
+    data: {
+      bodyClass: 'marketplace',
+      anonymous: true,
+    },
+  },
+  {
+    name: 'marketplace-public',
+    url: '',
+    component: MarketplacePublic,
+    parent: 'marketplace',
+    data: {
+      hideBreadcrumbs: true,
+      anonymous: true,
+    },
+  },
+  {
+    name: 'marketplace-categories-all',
+    url: 'categories/',
+    component: MarketplaceCategories,
+    parent: 'marketplace',
+    data: {
+      hideBreadcrumbs: true,
+      anonymous: true,
+    },
+  },
+  {
+    name: 'marketplace-categories',
+    url: 'categories/:uuid/',
+    component: MarketplaceCategories,
+    parent: 'marketplace',
+    data: {
+      hideBreadcrumbs: true,
+      anonymous: true,
+    },
   },
 
-  // {
-  //   name: 'marketplace-landing',
-  //   url: 'marketplace/',
-  //   component: MarketplaceLanding,
-  //   parent: 'project',
-  //   data: {
-  //     hideBreadcrumbs: true,
-  //   },
-  // },
+  {
+    name: 'marketplace-landing',
+    url: 'marketplace/',
+    component: MarketplaceLanding,
+    parent: 'project',
+    data: {
+      hideBreadcrumbs: true,
+    },
+  },
 
-  // {
-  //   name: 'marketplace-landing-customer',
-  //   url: 'marketplace/',
-  //   component: MarketplaceLanding,
-  //   parent: 'organization',
-  //   data: {
-  //     hideBreadcrumbs: true,
-  //   },
-  // },
+  {
+    name: 'marketplace-landing-customer',
+    url: 'marketplace/',
+    component: MarketplaceLanding,
+    parent: 'organization',
+    data: {
+      hideBreadcrumbs: true,
+    },
+  },
 
   {
     name: 'marketplace-compare',

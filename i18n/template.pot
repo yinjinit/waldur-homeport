@@ -403,6 +403,10 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+#: src/marketplace/landing/MarketplaceCategories.tsx
+msgid "All Solutions"
+msgstr ""
+
 #: src/booking/components/calendar/defaultConfig.ts
 #: src/booking/components/modal/BookingModal.tsx
 #: src/booking/components/modal/CalendarEventModal.tsx
@@ -955,6 +959,7 @@ msgid "Categories"
 msgstr ""
 
 #: src/customer/dashboard/CustomerResourcesList.tsx
+#: src/marketplace/common/SingleOffering.tsx
 #: src/marketplace/landing/LandingMap.tsx
 #: src/marketplace/offerings/OfferingsList.tsx
 #: src/marketplace/offerings/create/DescriptionStep.tsx
@@ -2730,6 +2735,10 @@ msgstr ""
 msgid "Initial username"
 msgstr ""
 
+#: src/marketplace/common/SingleOffering.tsx
+msgid "Install App"
+msgstr ""
+
 #: src/openstack/openstack-backup/OpenStackBackupSummary.tsx
 #: src/openstack/openstack-floating-ips/FloatingIpsList.tsx
 #: src/openstack/openstack-volume/actions/AttachAction.ts
@@ -3187,6 +3196,7 @@ msgstr ""
 #: src/auth/SigninButton.tsx
 #: src/auth/SigninForm.tsx
 #: src/auth/saml2/AuthSaml2Dialog.tsx
+#: src/navigation/header/PublicHeader.tsx
 msgid "Login"
 msgstr ""
 
@@ -3262,8 +3272,14 @@ msgstr ""
 #: src/marketplace/details/utils.ts
 #: src/marketplace/landing/LandingPage.tsx
 #: src/marketplace/landing/LandingPageContainer.tsx
+#: src/marketplace/landing/MarketplacePublic.tsx
 #: src/marketplace/sidebar.ts
+#: src/navigation/header/PublicHeader.tsx
 msgid "Marketplace"
+msgstr ""
+
+#: src/marketplace/landing/MarketplaceCategories.tsx
+msgid "Marketplace Categories"
 msgstr ""
 
 #: src/marketplace/cart/CheckoutPage.tsx
@@ -4743,6 +4759,10 @@ msgstr ""
 msgid "Priority"
 msgstr ""
 
+#: src/navigation/PublicFooter.tsx
+msgid "Privacy Policy"
+msgstr ""
+
 #: src/about.ts
 #: src/navigation/AppFooter.tsx
 msgid "Privacy policy"
@@ -5814,6 +5834,8 @@ msgid "Search"
 msgstr ""
 
 #: src/marketplace/landing/LandingPage.tsx
+#: src/marketplace/landing/MarketplaceCategories.tsx
+#: src/marketplace/landing/MarketplacePublic.tsx
 msgid "Search for apps and services"
 msgstr ""
 
@@ -5846,6 +5868,10 @@ msgstr ""
 #: src/issues/list/IssuesShortList.tsx
 #: src/issues/workspace/IssuesActivityStream.tsx
 msgid "See all"
+msgstr ""
+
+#: src/marketplace/common/AllOfferings.tsx
+msgid "See all catogories"
 msgstr ""
 
 #: src/marketplace/orders/item/list/OrderItemsListPlaceholder.tsx
@@ -6303,10 +6329,18 @@ msgstr ""
 msgid "Snapshots count"
 msgstr ""
 
+#: src/marketplace/landing/MarketplaceCategories.tsx
+msgid "Solution Categories"
+msgstr ""
+
 #: src/user/support/UserFilter.tsx
 #: src/user/support/UserList.tsx
 #: src/user/support/utils.ts
 msgid "Staff"
+msgstr ""
+
+#: src/marketplace/landing/MarketplacePublic.tsx
+msgid "Staff Picks"
 msgstr ""
 
 #: src/user/support/utils.ts
@@ -6711,6 +6745,7 @@ msgstr ""
 #: src/marketplace/orders/TermsOfService.tsx
 #: src/marketplace/orders/TermsOfServiceDialog.tsx
 #: src/navigation/AppFooter.tsx
+#: src/navigation/PublicFooter.tsx
 #: src/user/support/TermsOfService.tsx
 msgid "Terms of Service"
 msgstr ""
@@ -6794,6 +6829,7 @@ msgstr ""
 msgid "There are no offerings available."
 msgstr ""
 
+#: src/marketplace/common/AllOfferings.tsx
 #: src/marketplace/common/OfferingGrid.tsx
 msgid "There are no offerings in marketplace yet."
 msgstr ""
@@ -7336,6 +7372,7 @@ msgstr ""
 msgid "Unable to load marketplace offering details."
 msgstr ""
 
+#: src/marketplace/common/AllOfferings.tsx
 #: src/marketplace/common/OfferingGrid.tsx
 msgid "Unable to load marketplace offerings."
 msgstr ""
@@ -8081,6 +8118,7 @@ msgid "Verifying email change"
 msgstr ""
 
 #: src/navigation/AppFooter.tsx
+#: src/navigation/PublicFooter.tsx
 #: src/rancher/cluster/apps/ApplicationDetailsDialog.tsx
 #: src/rancher/template/ApplicationConfiguration.tsx
 msgid "Version"
@@ -8386,6 +8424,7 @@ msgstr ""
 msgid "browse"
 msgstr ""
 
+#: src/marketplace/common/SingleOffering.tsx
 #: src/providers/support/MapInfoPanel.tsx
 msgid "by"
 msgstr ""

@@ -1,3 +1,4 @@
+import { ngInjector } from '@waldur/core/services';
 import {
   getCustomerList,
   getServiceProviderList,
@@ -46,10 +47,16 @@ export const categoryAutocomplete = (query: string) => {
 
 export const offeringsAutocomplete = (query: object) => {
   const params = {
-    field: ['name', 'uuid', 'category_title', 'thumbnail'],
     o: 'name',
     state: 'Active',
     ...query,
   };
+
+  const authService = ngInjector.get('authService');
+
+  if (authService.isAuthenticated()) {
+    params['field'] = ['name', 'uuid', 'category_title', 'thumbnail'];
+  }
+
   return getOfferingsList(params).then(options => ({ options }));
 };

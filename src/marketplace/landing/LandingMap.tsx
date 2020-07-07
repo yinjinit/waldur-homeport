@@ -280,7 +280,7 @@ class PureLandingMap extends Component<MapProps, State> {
 
     if (bounds.length) {
       return (
-        <Map bounds={bounds}>
+        <Map bounds={bounds} scrollWheelZoom={false}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -295,7 +295,7 @@ class PureLandingMap extends Component<MapProps, State> {
       const position = [lat, lng];
 
       return (
-        <Map center={position} zoom={zoom}>
+        <Map center={position} zoom={zoom} scrollWheelZoom={false}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

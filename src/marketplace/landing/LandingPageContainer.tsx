@@ -9,7 +9,7 @@ import {
 } from '@waldur/marketplace/types';
 import { useTitle } from '@waldur/navigation/title';
 import { getCustomer } from '@waldur/workspace/selectors';
-// import { Customer } from '@waldur/workspace/types';
+import { Customer } from '@waldur/workspace/types';
 
 import { LandingPage } from './LandingPage';
 import * as actions from './store/actions';
@@ -21,7 +21,7 @@ interface LandingPageContainerProps {
   gotoOffering(offeringId: string): void;
   categories: CategoriesListType;
   offerings: OfferingsListType;
-  // customer: Customer;
+  customer: Customer;
 }
 
 export const LandingPageContainer: React.FC<LandingPageContainerProps> = props => {
@@ -39,7 +39,6 @@ export const LandingPageContainer: React.FC<LandingPageContainerProps> = props =
       loadOfferings={query =>
         offeringsAutocomplete({
           name: query,
-          // allowed_customer_uuid: props.customer.uuid,
         })
       }
     />
