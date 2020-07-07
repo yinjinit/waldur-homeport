@@ -5,6 +5,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { connect } from 'react-redux';
 
 import { FormattedHtml } from '@waldur/core/FormattedHtml';
+import { ngInjector } from '@waldur/core/services';
 import { translate } from '@waldur/i18n';
 
 import * as actions from './store/actions';
@@ -58,6 +59,23 @@ const PopupMarker = ({ content, position, onClick, iconUrl }: Props) => {
     return rows;
   };
 
+  const handleClick = () => {
+    const authService = ngInjector.get('authService');
+
+    if (authService.isAuthenticated()) {
+      onClick(content['uuid']);
+    } else {
+      let url = '';
+
+      if (window.location.pathname === '/') {
+        url += '/#';
+      }
+
+      url += `/organizations/${content['cate_id']}/marketplace-offering-details/${content['uuid']}/`;
+      window.location.href = url;
+    }
+  };
+
   return (
     <Marker position={position} icon={icon}>
       <Popup>
@@ -81,7 +99,7 @@ const PopupMarker = ({ content, position, onClick, iconUrl }: Props) => {
                 <Button
                   bsSize="small"
                   bsStyle="primary"
-                  onClick={() => onClick(content['uuid'])}
+                  onClick={() => handleClick()}
                 >
                   {translate('Go To Offering')}
                 </Button>
@@ -169,6 +187,7 @@ class PureLandingMap extends Component<MapProps, State> {
             if (cat.uuid === offering.category_uuid) {
               marker['iconUrl'] = cat.icon;
               marker.content['category'] = cat.title;
+              marker.content['cate_id'] = cat.uuid;
               marker.content['sections'] = this.getSections(offering, cat);
               break;
             }
