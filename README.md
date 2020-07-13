@@ -53,7 +53,7 @@ PS. If you see errors related to fsevents on OS X, the workaround is: `yarn cach
 cp src/configs/config.json.example src/configs/config.json
 ```
 
-6. Configure `config.json`. Please read [Configuration guide](docs/config.md) to learn more.
+6. Configure `config.json`. Please read [Configuration guide](docs/config.md) to learn more. Set `forceOrgCreation: true` to create organization on inital user creation.
 
 7. Run application: `yarn start`.
 
