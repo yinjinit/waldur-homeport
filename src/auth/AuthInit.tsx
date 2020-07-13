@@ -26,9 +26,13 @@ export const AuthInit = () => {
       try {
         const response = await UsersService.update(user);
         UsersService.setCurrentUser(response.data);
-        // router.stateService.go('profile.details');
         dispatch(showSuccess(translate('User has been updated.')));
-        createOrg(true);
+
+        if (ENV.forceOrgCreation) {
+          createOrg(true);
+        } else {
+          router.stateService.go('profile.details');
+        }
       } catch (error) {
         dispatch(showError(translate('Unable to save user.')));
       }
@@ -44,7 +48,7 @@ export const AuthInit = () => {
     </div>
   ) : error ? (
     <>{translate('Unable to load user.')}</>
-  ) : !org ? (
+  ) : ENV.forceOrgCreation && !org ? (
     <div className="wrapper">
       <div className="row m-t-md m-b-sm">
         <div className="col-md-6 col-md-offset-3">

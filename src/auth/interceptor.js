@@ -1,17 +1,14 @@
 import Axios from 'axios';
 import Qs from 'qs';
 
-import { ngInjector } from '@waldur/core/services';
+import { ENV, ngInjector } from '@waldur/core/services';
 import { closeModalDialog } from '@waldur/modal/actions';
 import store from '@waldur/store/store';
-import { CustomersService } from '@waldur/customer/services/CustomersService';
 import { UsersService } from '@waldur/user/UsersService';
 import {
-  getCustomer,
   isStaff,
   getUserCustomerPermissions,
 } from '@waldur/workspace/selectors';
-import { canManageCustomer } from '@waldur/customer/create/selectors';
 
 // @ngInject
 function initAuthToken($auth, $http) {
@@ -62,15 +59,16 @@ function requireAuth($transitions, $auth, $rootScope, features) {
       UsersService.isCurrentUserValid().then(result => {
         if (
           result &&
-          isStaff(store.getState()) &&
-          getUserCustomerPermissions(store.getState()).length > 0
+          (!ENV.forceOrgCreation ||
+            (isStaff(store.getState()) &&
+              getUserCustomerPermissions(store.getState()).length > 0))
         ) {
-          if (transition.to().name == 'initialdata') {
+          if (transition.to().name === 'initialdata') {
             return transition.router.stateService.target('profile.details');
           }
           return;
         }
-        if (transition.to().name == 'initialdata') {
+        if (transition.to().name === 'initialdata') {
           return;
         }
         return transition.router.stateService.target('initialdata');
