@@ -159,7 +159,7 @@
     "lint-staged": "^10.0.8",
     "lodash": "^4.17.11",
     "markdown-loader": "^4.0.0",
-    "marked": "^0.8.0",
+    "marked": "^4.0.10",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "offline-plugin": "^4.8.1",
